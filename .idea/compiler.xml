@@ -17,22 +17,40 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile default="false" name="Annotation profile for astroid-android" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="astroid-android" />
-        <module name="astroid-core" />
-        <module name="astroid-desktop" />
-        <module name="astroid-html" />
       </profile>
-      <profile default="false" name="Annotation profile for Astroid iOS" enabled="true">
+      <profile default="false" name="Annotation profile for astroid-ios" enabled="true">
         <sourceOutputDir name="bin/generated-sources/annotations" />
         <sourceTestOutputDir name="bin/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="astroid-ios" />
+      </profile>
+      <profile default="false" name="Annotation profile for astroid-html" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="astroid-html" />
+      </profile>
+      <profile default="false" name="Annotation profile for astroid-desktop" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="astroid-desktop" />
+      </profile>
+      <profile default="false" name="Annotation profile for astroid-core" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="astroid-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

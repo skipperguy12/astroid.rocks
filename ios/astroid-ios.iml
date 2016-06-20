@@ -8,7 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="astroid-core" />
+    <orderEntry type="library" name="Maven: rocks.astroid:astroid-core:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.badlogic.gdx:gdx-backend-ios:1.2.0" level="project" />
   </component>

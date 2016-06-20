@@ -5,15 +5,18 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="android" url="file://$PROJECT_DIR$/android" />
+    <file type="gwt" url="file://$PROJECT_DIR$/html" />
+    <file type="web" url="file://$PROJECT_DIR$/html" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/desktop/pom.xml" />
         <option value="$PROJECT_DIR$/android/pom.xml" />
         <option value="$PROJECT_DIR$/html/pom.xml" />
         <option value="$PROJECT_DIR$/ios/pom.xml" />
+        <option value="$PROJECT_DIR$/desktop/pom.xml" />
+        <option value="$PROJECT_DIR$/core/pom.xml" />
       </list>
     </option>
   </component>

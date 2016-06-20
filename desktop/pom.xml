@@ -38,6 +38,11 @@
 			<artifactId>gdx-platform</artifactId>
 			<classifier>natives-desktop</classifier>
 		</dependency>
+		<dependency>
+			<groupId>rocks.astroid</groupId>
+			<artifactId>astroid-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
