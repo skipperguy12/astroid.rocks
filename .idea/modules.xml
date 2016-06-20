@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/astroid.iml" filepath="$PROJECT_DIR$/astroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/astroid-core.iml" filepath="$PROJECT_DIR$/core/astroid-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktop/astroid-desktop.iml" filepath="$PROJECT_DIR$/desktop/astroid-desktop.iml" />
+    </modules>
+  </component>
+</project>
