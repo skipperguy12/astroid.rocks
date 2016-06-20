@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/astroid.iml" filepath="$PROJECT_DIR$/astroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/astroid-android.iml" filepath="$PROJECT_DIR$/android/astroid-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/astroid-core.iml" filepath="$PROJECT_DIR$/core/astroid-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/desktop/astroid-desktop.iml" filepath="$PROJECT_DIR$/desktop/astroid-desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/html/astroid-html.iml" filepath="$PROJECT_DIR$/html/astroid-html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ios/astroid-ios.iml" filepath="$PROJECT_DIR$/ios/astroid-ios.iml" />
     </modules>
   </component>
 </project>

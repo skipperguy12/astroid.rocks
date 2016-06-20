@@ -3,11 +3,17 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="android" url="file://$PROJECT_DIR$/android" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/desktop/pom.xml" />
+        <option value="$PROJECT_DIR$/android/pom.xml" />
+        <option value="$PROJECT_DIR$/html/pom.xml" />
+        <option value="$PROJECT_DIR$/ios/pom.xml" />
       </list>
     </option>
   </component>
