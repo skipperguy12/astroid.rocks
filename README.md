@@ -7,4 +7,3 @@ Another spaceship game.
 - [ ] Powerups
 - [ ] Asteroids
 - [ ] Teams
-- [ ] 
