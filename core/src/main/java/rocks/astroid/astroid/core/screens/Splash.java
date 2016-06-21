@@ -30,14 +30,14 @@ public class Splash implements Screen {
     public void show() {
         batch = new SpriteBatch();
 
-        Texture splashTexture = new Texture(Gdx.files.internal("img/splash.png"));
-        splash = new Sprite(splashTexture);
+        splash = new Sprite(new Texture("img/splash.png"));
         splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
     }
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
@@ -52,6 +52,7 @@ public class Splash implements Screen {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        splash.getTexture().dispose();
     }
 }
