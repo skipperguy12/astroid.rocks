@@ -17,6 +17,11 @@
 			<groupId>com.badlogicgames.gdx</groupId>
 			<artifactId>gdx</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>aurelienribon</groupId>
+			<artifactId>tweenengine</artifactId>
+			<version>6.3.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
