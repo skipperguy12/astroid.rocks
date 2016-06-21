@@ -46,7 +46,7 @@ public class Fighter extends Ship {
         batch.begin();
         ship.draw(batch);
         batch.end();
-        System.out.println("x = " + temp.x + "  y = " + temp.y + "  z = " + temp.z);
+        //System.out.println("x = " + temp.x + "  y = " + temp.y + "  z = " + temp.z);
     }
 
     @Override

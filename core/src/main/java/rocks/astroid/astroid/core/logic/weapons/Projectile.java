@@ -18,6 +18,7 @@ public abstract class Projectile {
         this.range = range;
         this.intialSpeed = intialSpeed;
         this.resistance = resistance;
+        speed = intialSpeed;
     }
     public float getDamage() {
         return damage;
@@ -34,6 +35,7 @@ public abstract class Projectile {
     public float getSpeed(){
         return speed;
     }
+
     public void update()
     {
         speed-=resistance;
