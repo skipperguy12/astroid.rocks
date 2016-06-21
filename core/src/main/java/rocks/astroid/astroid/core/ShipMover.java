@@ -17,7 +17,7 @@ import rocks.astroid.astroid.core.logic.Ship;
 /**
  * Contains a ship and moves it based on input
  */
-public class ShipMover extends ApplicationAdapter {
+public class ShipMover {
     private Ship ship;
     private float speed;
 
@@ -56,10 +56,10 @@ public class ShipMover extends ApplicationAdapter {
     public void input()
     {
         float mobility = ship.getThrust()/ship.getMass();
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) speed+=mobility * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) speed-=mobility * Gdx.graphics.getDeltaTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
-        ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
+        //if (Gdx.input.isKeyPressed(Input.Keys.UP)) speed+=mobility * Gdx.graphics.getDeltaTime();
+        //if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) speed-=mobility * Gdx.graphics.getDeltaTime();
+        //if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
+        //if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
+        //ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
     }
 }

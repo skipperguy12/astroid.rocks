@@ -24,12 +24,12 @@ public class Fighter extends Ship {
      * @param hull
      * @param shields
      */
-    public Fighter(float x, float y, float rotation, float thrust, float mass, float hull, float shields)
+    public Fighter(SpriteBatch batch, float x, float y, float rotation, float thrust, float mass, float hull, float shields)
     {
         super(x,y,rotation,thrust,mass,hull,shields);
-        batch = new SpriteBatch();
+        this.batch = batch;
         ship = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));//change with different teams
-        ship.setScale(.1f, .1f);
+        ship.setScale(1f, 1f);
         ship.rotate90(true);
     }
 
