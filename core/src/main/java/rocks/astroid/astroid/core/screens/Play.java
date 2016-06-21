@@ -27,9 +27,10 @@ public class Play implements Screen {
     @Override
     public void render(float delta) {
         //player.update();
+        batch.setProjectionMatrix(cam.combined);
         handleInput();
         cam.update();
-        batch.setProjectionMatrix(cam.combined);
+
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -42,39 +43,38 @@ public class Play implements Screen {
     }
 
 
+    //input for camera
     private void handleInput() {
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            cam.zoom += 20;
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
+            cam.zoom += .1;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-            cam.zoom -= 20;
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_9)) {
+            cam.zoom -= .1;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            cam.translate(-3, 0, 0);
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
+            cam.translate(-5, 0, 0);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            cam.translate(3, 0, 0);
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_6)) {
+            cam.translate(5, 0, 0);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            cam.translate(0, -3, 0);
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2)) {
+            cam.translate(0, -5, 0);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            cam.translate(0, 3, 0);
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_8)) {
+            cam.translate(0, 5, 0);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1)) {
             cam.rotate(-rotationSpeed, 0, 0, 1);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_3)) {
             cam.rotate(rotationSpeed, 0, 0, 1);
         }
-
-        cam.zoom = MathUtils.clamp(cam.zoom, 0.1f, 100/cam.viewportWidth);
+        //cam.zoom = MathUtils.clamp(cam.zoom, 0.1f, 100/cam.viewportWidth);
 
         float effectiveViewportWidth = cam.viewportWidth * cam.zoom;
         float effectiveViewportHeight = cam.viewportHeight * cam.zoom;
-
-        cam.position.x = MathUtils.clamp(cam.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
-        cam.position.y = MathUtils.clamp(cam.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
+        //cam.position.x = MathUtils.clamp(cam.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
+        //cam.position.y = MathUtils.clamp(cam.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
     }
 
 
@@ -94,11 +94,12 @@ public class Play implements Screen {
 
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
+
         // Constructs a new OrthographicCamera, using the given viewport width and height
         // Height is multiplied by aspect ratio.
-        cam = new OrthographicCamera(30, 30 * (h / w));
+        cam = new OrthographicCamera(w, h);//* (h / w)
 
-        cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
+        //cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 
         cam.update();
 
