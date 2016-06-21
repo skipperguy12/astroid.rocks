@@ -9,6 +9,7 @@ public class AstroidDesktop {
 	public static void main (String[] args) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.vSyncEnabled = true;
+		config.title = Astroid.TITLE + " v" + Astroid.VERSION;
 		//config.useGL30 = true;
 		config.width = 1280;
 		config.height = 720;

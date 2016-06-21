@@ -11,6 +11,9 @@ import com.badlogic.gdx.Gdx;
 import rocks.astroid.astroid.core.screens.Splash;
 
 public class Astroid extends Game {
+	public static final String TITLE = "astroid.rocks",
+								VERSION = "0.0.1";
+
 	private Texture texture;
 	private SpriteBatch batch;
 	private Music backgroundMusic;
