@@ -33,10 +33,8 @@ public class Play implements Screen {
         cam.translate(player.getMovementVector());
         cam.update();
         player.update();
-        //cam.position.set(cam.unproject(new Vector3(test.getX(), test.getY(), 2)));
 
         batch.begin();
-        //test.draw(batch);
         batch.end();
     }
 
@@ -66,12 +64,6 @@ public class Play implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_3)) {
             cam.rotate(rotationSpeed, 0, 0, 1);
         }
-        //cam.zoom = MathUtils.clamp(cam.zoom, 0.1f, 100/cam.viewportWidth);
-
-        //float effectiveViewportWidth = cam.viewportWidth * cam.zoom;
-        //float effectiveViewportHeight = cam.viewportHeight * cam.zoom;
-        //cam.position.x = MathUtils.clamp(cam.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
-        //cam.position.y = MathUtils.clamp(cam.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
     }
 
     @Override
@@ -83,19 +75,10 @@ public class Play implements Screen {
 
     @Override
     public void show() {
-        //test = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));
         rotationSpeed = 0.5f;
         batch = new SpriteBatch();
 
-        float w = Gdx.graphics.getWidth();
-        float h = Gdx.graphics.getHeight();
-
-        // Constructs a new OrthographicCamera, using the given viewport width and height
-        // Height is multiplied by aspect ratio.
-        cam = new OrthographicCamera(w, h);//* (h / w)
-
-        //cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
-
+        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());//* (h / w)
         cam.update();
 
         player = new ShipMover(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
@@ -114,7 +97,6 @@ public class Play implements Screen {
 
     @Override
     public void dispose() {
-        //test.getTexture().dispose();
         batch.dispose();
     }
 }

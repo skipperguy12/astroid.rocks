@@ -33,8 +33,8 @@ public class ShipMover {
     {
         Vector3 temp = ship.getShipLocation();
         ship.setShipLocation(new Vector3(
-                (int) (temp.x+ (Math.cos(Math.toRadians(temp.z))*speed)),
-                (int) (temp.y+ (Math.sin(Math.toRadians(temp.z))*speed)),
+                (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*speed)),
+                (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*speed)),
                 temp.z)
         );
     }
@@ -42,8 +42,8 @@ public class ShipMover {
     {
         Vector3 temp = ship.getShipLocation();
         return new Vector2(
-                (int)(Math.cos(Math.toRadians(temp.z))*speed),
-                (int)(Math.sin(Math.toRadians(temp.z))*speed)
+                (int)(MathUtils.cos((float)Math.toRadians(temp.z))*speed),
+                (int)(MathUtils.sin((float)Math.toRadians(temp.z))*speed)
         );
     }
 
