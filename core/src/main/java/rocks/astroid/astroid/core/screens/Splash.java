@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Splash implements Screen {
     private SpriteBatch batch;
     private Sprite splash;
+    private Sprite rocket;
 
     @Override
     public void render(float delta) {
@@ -18,6 +19,7 @@ public class Splash implements Screen {
 
         batch.begin();
         splash.draw(batch);
+        rocket.draw(batch);
         batch.end();
     }
 
@@ -31,8 +33,10 @@ public class Splash implements Screen {
         batch = new SpriteBatch();
 
         splash = new Sprite(new Texture("img/splash.png"));
+        rocket = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));
         splash.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
+        rocket.setScale(.75f, .75f);
+        rocket.setCenter(Gdx.graphics.getWidth()/2, (Gdx.graphics.getHeight()/2) - 50);
     }
 
     @Override
