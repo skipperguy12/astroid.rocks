@@ -22,26 +22,23 @@ public class Play implements Screen {
     private SpriteBatch batch;
     private ShipMover player;
 
-    private Sprite test;
+    //private Sprite test;
 
     @Override
     public void render(float delta) {
-        //player.update();
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(cam.combined);
         handleInput();
+
+        cam.translate(player.getMovementVector());
         cam.update();
-
-
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        //test.setScale(.5f, .5f);
+        player.update();
         //cam.position.set(cam.unproject(new Vector3(test.getX(), test.getY(), 2)));
 
         batch.begin();
-        test.draw(batch);
+        //test.draw(batch);
         batch.end();
     }
-
 
     //input for camera
     private void handleInput() {
@@ -71,12 +68,11 @@ public class Play implements Screen {
         }
         //cam.zoom = MathUtils.clamp(cam.zoom, 0.1f, 100/cam.viewportWidth);
 
-        float effectiveViewportWidth = cam.viewportWidth * cam.zoom;
-        float effectiveViewportHeight = cam.viewportHeight * cam.zoom;
+        //float effectiveViewportWidth = cam.viewportWidth * cam.zoom;
+        //float effectiveViewportHeight = cam.viewportHeight * cam.zoom;
         //cam.position.x = MathUtils.clamp(cam.position.x, effectiveViewportWidth / 2f, 100 - effectiveViewportWidth / 2f);
         //cam.position.y = MathUtils.clamp(cam.position.y, effectiveViewportHeight / 2f, 100 - effectiveViewportHeight / 2f);
     }
-
 
     @Override
     public void resize(int width, int height) {
@@ -87,9 +83,8 @@ public class Play implements Screen {
 
     @Override
     public void show() {
-        test = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));
+        //test = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));
         rotationSpeed = 0.5f;
-
         batch = new SpriteBatch();
 
         float w = Gdx.graphics.getWidth();
@@ -103,7 +98,7 @@ public class Play implements Screen {
 
         cam.update();
 
-        player = new ShipMover(new Fighter(batch, Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2 - 50,0,10,1,1000,100));
+        player = new ShipMover(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
     }
 
     @Override
@@ -119,8 +114,7 @@ public class Play implements Screen {
 
     @Override
     public void dispose() {
-        test.getTexture().dispose();
+        //test.getTexture().dispose();
         batch.dispose();
-
     }
 }

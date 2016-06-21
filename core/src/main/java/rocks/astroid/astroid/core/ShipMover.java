@@ -3,8 +3,7 @@ package rocks.astroid.astroid.core;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.*;
 import rocks.astroid.astroid.core.logic.Ship;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -39,6 +38,15 @@ public class ShipMover {
                 temp.z)
         );
     }
+    public Vector2 getMovementVector()
+    {
+        Vector3 temp = ship.getShipLocation();
+        return new Vector2(
+                (int)(Math.cos(Math.toRadians(temp.z))*speed),
+                (int)(Math.sin(Math.toRadians(temp.z))*speed)
+        );
+    }
+
     public void render() {
         ship.update();
         ship.draw();
@@ -49,17 +57,20 @@ public class ShipMover {
         moveLaterally();
         render();
     }
-
+    public Ship getShip()
+    {
+        return ship;
+    }
     /**
      * accepts arrow key input and alters the ships properties
      */
     public void input()
     {
         float mobility = ship.getThrust()/ship.getMass();
-        //if (Gdx.input.isKeyPressed(Input.Keys.UP)) speed+=mobility * Gdx.graphics.getDeltaTime();
-        //if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) speed-=mobility * Gdx.graphics.getDeltaTime();
-        //if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
-        //if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
-        //ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) speed+=mobility * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) speed-=mobility * Gdx.graphics.getDeltaTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
+        ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
     }
 }
