@@ -35,7 +35,7 @@ public abstract class Ship {
     /**
      * This is the typical use constructor- ship location, thrust and mass
      */
-    public Ship(float x, float y, float rotation, float thrust, float mass) {
+    public Ship(float x, float y, float rotation, float thrust, float mass, float hull, float shields) {
         shipLocation = new Vector3(x, y, rotation);
         this.thrust = thrust;
         this.mass = mass;
