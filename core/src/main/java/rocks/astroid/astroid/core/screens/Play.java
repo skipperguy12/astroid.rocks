@@ -14,6 +14,7 @@ import rocks.astroid.astroid.core.logic.World;
 import rocks.astroid.astroid.core.logic.astroids.Astroid;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
+import rocks.astroid.astroid.physics.PhysicsScene;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,9 @@ public class Play implements Screen {
     private SpriteBatch batch;
     private World world;
     private UserInput input;
+
+    private PhysicsScene physicsScene;
+
 
     public SpriteDisplay getSpriteDisplay()
     {
