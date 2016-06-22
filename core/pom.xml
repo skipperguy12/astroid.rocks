@@ -12,7 +12,28 @@
 	<packaging>jar</packaging>
 	<name>Astroid Core</name>
 
+	<repositories>
+		<repository>
+			<id>clojars</id>
+			<url>http://clojars.org/repo/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+		<dependency>
+			<groupId>kryonet</groupId>
+			<artifactId>kryonet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.esotericsoftware</groupId>
+			<artifactId>kryo-shaded</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>rocks.astroid</groupId>
+			<artifactId>astroid-server</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.badlogicgames.gdx</groupId>
 			<artifactId>gdx</artifactId>

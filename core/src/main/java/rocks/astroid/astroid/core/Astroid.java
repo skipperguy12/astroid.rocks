@@ -10,6 +10,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import rocks.astroid.astroid.core.screens.Play;
 import rocks.astroid.astroid.core.screens.Splash;
+import rocks.astroid.astroid.core.screens.TestClient;
 
 public class Astroid extends Game {
 	public static final String TITLE = "astroid.rocks",
@@ -21,7 +22,7 @@ public class Astroid extends Game {
 
 	@Override
 	public void create () {
-		setScreen(new Play());
+		setScreen(new TestClient());
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("background.mp3"));
 		backgroundMusic.play();
 	}
