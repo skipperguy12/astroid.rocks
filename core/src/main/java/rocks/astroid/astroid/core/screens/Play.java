@@ -41,8 +41,8 @@ public class Play implements Screen {
         float mobility = ship.getThrust()/ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) ship.setSpeed(ship.getSpeed()+mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) ship.setSpeed(ship.getSpeed()- mobility * Gdx.graphics.getDeltaTime());
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) { ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
         ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             cam.zoom += .1;

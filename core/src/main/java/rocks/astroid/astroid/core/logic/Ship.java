@@ -101,8 +101,8 @@ public abstract class Ship {
 
     public void slow()
     {
-        speed -= GlobalFunctions.friction;
-        if (speed<0) speed = 0;
+        if(speed>0) speed-=GlobalFunctions.friction;
+        if(speed<0) speed+=GlobalFunctions.friction;
     }
 
     /**
