@@ -22,7 +22,6 @@ public class Astroid extends Game {
 	@Override
 	public void create () {
 		setScreen(new Play());
-		
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("background.mp3"));
 		backgroundMusic.play();
 	}

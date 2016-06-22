@@ -29,7 +29,7 @@ public class Fighter extends Ship {
         super(x,y,rotation,thrust,mass,hull,shields);
         this.batch = batch;
         ship = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));//change with different teams
-        ship.setScale(1f, 1f);
+        ship.setScale(.1f, .1f);
         ship.rotate90(true);
     }
 
@@ -51,5 +51,6 @@ public class Fighter extends Ship {
 
     @Override
     public void update() {
+        super.update();
     }
 }

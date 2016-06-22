@@ -5,12 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
-import rocks.astroid.astroid.core.ShipMover;
 import rocks.astroid.astroid.core.logic.Fighter;
 import rocks.astroid.astroid.core.logic.Ship;
 
@@ -20,9 +17,7 @@ public class Play implements Screen {
     private float rotationSpeed;
 
     private SpriteBatch batch;
-    private ShipMover player;
-
-    //private Sprite test;
+    private Ship ship;
 
     @Override
     public void render(float delta) {
@@ -30,16 +25,25 @@ public class Play implements Screen {
         batch.setProjectionMatrix(cam.combined);
         handleInput();
 
-        cam.translate(player.getMovementVector());
+        moveLaterally();
+        ship.update();
+        ship.draw();
         cam.update();
-        player.update();
+
+        //cam.position.set(ship.getShipLocation().x, ship.getShipLocation().y, 0);
+        //cam.translate(ship.getMovementVector());
 
         batch.begin();
         batch.end();
     }
 
-    //input for camera
     private void handleInput() {
+        float mobility = ship.getThrust()/ship.getMass();
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) ship.setSpeed(ship.getSpeed()+mobility * Gdx.graphics.getDeltaTime());
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) ship.setSpeed(ship.getSpeed()- mobility * Gdx.graphics.getDeltaTime());
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*10;
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*10;
+        ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             cam.zoom += .1;
         }
@@ -65,7 +69,18 @@ public class Play implements Screen {
             cam.rotate(rotationSpeed, 0, 0, 1);
         }
     }
-
+    /**
+     * moves the ship either forwards or backwards based on speed
+     */
+    private void moveLaterally()
+    {
+        Vector3 temp = ship.getShipLocation();
+        ship.setShipLocation(new Vector3(
+                (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*ship.getSpeed())),
+                (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*ship.getSpeed())),
+                temp.z)
+        );
+    }
     @Override
     public void resize(int width, int height) {
         cam.viewportWidth = width;
@@ -81,7 +96,8 @@ public class Play implements Screen {
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());//* (h / w)
         cam.update();
 
-        player = new ShipMover(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
+        //ship = new Player(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
+        ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100);
     }
 
     @Override

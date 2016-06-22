@@ -1,6 +1,7 @@
 package rocks.astroid.astroid.core.logic;
 
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.client.GlobalFunctions;
 
 /**
  * Abstract representation of a Ship object
@@ -13,6 +14,22 @@ public abstract class Ship {
     //Mass of the ship- used in combination with thrust to determine acceleration
     private float mass;
 
+    private float speed;
+
+
+
+    public  static enum Team{
+        RED, BLUE, PURPLE
+    }
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    private Team team;
 
     /**
      * Default constructor- should not typically be used
@@ -21,6 +38,7 @@ public abstract class Ship {
         shipLocation = new Vector3(0f, 0f, 0f);
         thrust = 1;
         mass = 1;
+        speed = 0;
     }
 
     /**
@@ -30,6 +48,7 @@ public abstract class Ship {
         shipLocation = new Vector3(x, y, rotation);
         thrust = 1;
         mass = 1;
+        speed = 0;
     }
 
     /**
@@ -39,6 +58,7 @@ public abstract class Ship {
         shipLocation = new Vector3(x, y, rotation);
         this.thrust = thrust;
         this.mass = mass;
+        speed = 0;
     }
 
     /**
@@ -47,11 +67,15 @@ public abstract class Ship {
     public Ship(Vector3 shipLocation, float thrust) {
         this.shipLocation = shipLocation;
         this.thrust = thrust;
+        speed = 0;
     }
 
     public abstract void draw();
 
-    public abstract void update();
+    public void update()
+    {
+        slow();
+    }
 
     public float getThrust() {
         return thrust;
@@ -67,6 +91,18 @@ public abstract class Ship {
 
     public void setMass(float mass) {
         this.mass = mass;
+    }
+    public float getSpeed() {
+        return speed;
+    }
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public void slow()
+    {
+        speed -= GlobalFunctions.friction;
+        if (speed<0) speed = 0;
     }
 
     /**
