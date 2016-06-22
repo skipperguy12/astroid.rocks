@@ -1,4 +1,4 @@
 package rocks.astroid.astroid.server.packets;
 
-public class Packet {
+public abstract class Packet {
 }

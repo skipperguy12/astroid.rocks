@@ -1,5 +1,5 @@
 package rocks.astroid.astroid.server.packets;
 
-public class TestPacket {
+public class TestPacket extends Packet {
     public String text;
 }
