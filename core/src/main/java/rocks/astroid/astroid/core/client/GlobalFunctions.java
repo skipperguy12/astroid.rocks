@@ -6,7 +6,7 @@ import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 
 public class GlobalFunctions {
-    public static final float friction = .001f;
+    public static final float friction = .003f;
     public static Sprite getSprite(Ship ship) {
         Sprite sprite = null;
         if(ship instanceof Fighter) {

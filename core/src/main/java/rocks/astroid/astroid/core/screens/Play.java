@@ -44,6 +44,7 @@ public class Play implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) { ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
         ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
+
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             cam.zoom += .1;
         }
@@ -96,7 +97,6 @@ public class Play implements Screen {
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());//* (h / w)
         cam.update();
 
-        //ship = new Player(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
         ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0);
     }
 

@@ -103,6 +103,7 @@ public abstract class Ship {
     {
         if(speed>0) speed-=GlobalFunctions.friction;
         if(speed<0) speed+=GlobalFunctions.friction;
+        System.out.println(speed);
     }
 
     /**
