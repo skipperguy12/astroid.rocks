@@ -2,8 +2,8 @@ package rocks.astroid.astroid.core.client;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import rocks.astroid.astroid.core.logic.Fighter;
-import rocks.astroid.astroid.core.logic.Ship;
+import rocks.astroid.astroid.core.logic.ships.Fighter;
+import rocks.astroid.astroid.core.logic.ships.Ship;
 
 public class GlobalFunctions {
     public static final float friction = .001f;

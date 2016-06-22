@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
-import rocks.astroid.astroid.core.logic.Fighter;
-import rocks.astroid.astroid.core.logic.Ship;
+import rocks.astroid.astroid.core.logic.ships.Fighter;
+import rocks.astroid.astroid.core.logic.ships.Ship;
 
 public class Play implements Screen {
 
@@ -97,7 +97,7 @@ public class Play implements Screen {
         cam.update();
 
         //ship = new Player(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
-        ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100);
+        ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0);
     }
 
     @Override

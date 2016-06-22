@@ -1,10 +1,9 @@
-package rocks.astroid.astroid.core.logic;
+package rocks.astroid.astroid.core.logic.ships;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import rocks.astroid.astroid.core.logic.Ship;
 
 /**
  * Fighter - the normal spaceship. Has high mobility, easy weapon (low damage, high frequency), blast ultimate to fire in all directions
@@ -19,14 +18,10 @@ public class Fighter extends Ship {
      * @param x
      * @param y
      * @param rotation
-     * @param thrust
-     * @param mass
-     * @param hull
-     * @param shields
      */
-    public Fighter(SpriteBatch batch, float x, float y, float rotation, float thrust, float mass, float hull, float shields)
+    public Fighter(SpriteBatch batch, float x, float y, float rotation)
     {
-        super(x,y,rotation,thrust,mass,hull,shields);
+        super(x,y,rotation,10,1,1000,100);
         this.batch = batch;
         ship = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));//change with different teams
         ship.setScale(.1f, .1f);

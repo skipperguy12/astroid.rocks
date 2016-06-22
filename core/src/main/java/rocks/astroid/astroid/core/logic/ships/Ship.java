@@ -1,4 +1,4 @@
-package rocks.astroid.astroid.core.logic;
+package rocks.astroid.astroid.core.logic.ships;
 
 import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
