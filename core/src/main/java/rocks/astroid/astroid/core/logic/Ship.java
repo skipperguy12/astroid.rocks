@@ -1,5 +1,6 @@
 package rocks.astroid.astroid.core.logic;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector3;
 
 /**
@@ -12,6 +13,20 @@ public abstract class Ship {
     private float thrust;
     //Mass of the ship- used in combination with thrust to determine acceleration
     private float mass;
+
+    public Ship.team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Ship.team team) {
+        this.team = team;
+    }
+
+    public enum team {
+        RED, BLUE, PURPLE;
+    }
+
+    private team team;
 
 
     /**
@@ -79,4 +94,5 @@ public abstract class Ship {
     public void setShipLocation(Vector3 shipLocation) {
         this.shipLocation = shipLocation;
     }
+
 }

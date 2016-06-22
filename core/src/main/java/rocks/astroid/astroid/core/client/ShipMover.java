@@ -1,4 +1,4 @@
-package rocks.astroid.astroid.core;
+package rocks.astroid.astroid.core.client;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

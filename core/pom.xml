@@ -17,11 +17,31 @@
 			<groupId>com.badlogicgames.gdx</groupId>
 			<artifactId>gdx</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-box2d-platform -->
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d-platform</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>aurelienribon</groupId>
 			<artifactId>tweenengine</artifactId>
 			<version>6.3.3</version>
 		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d-platform</artifactId>
+			<classifier>natives-desktop</classifier>
+			<version>${gdx.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
