@@ -34,6 +34,8 @@ public class Play implements Screen {
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         input = new UserInput(ship,cam);
         Gdx.input.setInputProcessor(input);
+
+
     }
     public static SpriteDisplay getSpriteDisplay()
     {
@@ -46,11 +48,16 @@ public class Play implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(cam.combined);
-        input.handleInput();
+        input.handleInput(delta);
 
         GlobalFunctions.moveLaterally(ship);
-
         ship.update();
+
+
+        cam.position.set(ship.getLocation().x, ship.getLocation().y, 0);
+        cam.update();
+
+
         spriteDisplay.render();
 
         for(Projectile projectile: GlobalFunctions.projectiles) {
@@ -58,7 +65,6 @@ public class Play implements Screen {
         }
         removeProjectile();
 
-        cam.update();
     }
 
     /**

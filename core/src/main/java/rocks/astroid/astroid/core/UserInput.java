@@ -12,16 +12,16 @@ import rocks.astroid.astroid.core.logic.ships.CombatShip;
 public class UserInput extends InputAdapter {
     private CombatShip ship;
     private OrthographicCamera cam;
-    private Timer fireTimer;
 
     public UserInput(CombatShip ship, OrthographicCamera cam)
     {
         this.ship = ship;
         this.cam = cam;
-        fireTimer = new Timer((long)(1000/ship.getFireRate()));
     }
 
-    public void handleInput() {
+
+    public void handleInput(float delta) {
+
         float mobility = ship.getThrust() / ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP))
             ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
@@ -40,7 +40,8 @@ public class UserInput extends InputAdapter {
 //            System.out.println("hi");
 //            ship.fire();
 //        }
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)&&fireTimer.thresholdPassed()) ship.fire();
+
+        ship.fire(delta);
 
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             cam.zoom += .1;

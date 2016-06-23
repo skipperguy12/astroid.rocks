@@ -28,7 +28,7 @@ public class Bullet extends Projectile{
         super.update();
         if (speed == 0)
             Play.getSpriteDisplay().removeSpritePlus(spritePlus);
-        System.out.println(location.z);
+       // System.out.println(location.z);
 
         GlobalFunctions.moveLaterally(this);
         spritePlus.setLocation(location);
