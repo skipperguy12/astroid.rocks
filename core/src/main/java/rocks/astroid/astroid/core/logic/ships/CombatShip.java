@@ -24,7 +24,7 @@ public abstract class CombatShip extends Ship{
         {
             case Bullet:
                 //Bullet bill =
-                        new Bullet(speed, new Vector3(location.x,location.y,location.z));
+                        new Bullet(speed, new Vector3(location.x,location.y,(location.z)%360));
                 //GlobalFunctions.projectiles.add(bill);
                 //System.out.println("bullet");
                 break;

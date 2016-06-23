@@ -21,8 +21,8 @@ public class Fighter extends CombatShip {
      * @param rotation
      */
     public Fighter(float x, float y, float rotation) {
-        super(x, y, rotation, 10, 1, 1000, 100, Projectile.Projectiles.Bullet, 5);
-        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location);
+        super(x, y, rotation, 10, 1, 1000, 100, Projectile.Projectiles.Bullet, 10);
+        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.Ship);
         Play.getSpriteDisplay().addSpritePlus(spritePlus);
     }
 

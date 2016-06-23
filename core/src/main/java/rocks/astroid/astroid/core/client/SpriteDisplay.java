@@ -16,6 +16,7 @@ public class SpriteDisplay
     private ArrayList<SpritePlus> imgs;
     private Sprite sprite;
     private Vector3 location;
+    private SpritePlus.types type;
     public SpriteDisplay()
     {
         imgs = new ArrayList<SpritePlus>();
@@ -34,12 +35,14 @@ public class SpriteDisplay
        // img.getSprite().setScale(.3f, .3f);
         imgs.add(img);
     }
-//    public void addSpritePlus(SpritePlus img, boolean isShip){
-//        if(isShip)
-//            img.getSprite().rotate90(true);
-//        img.getSprite().setScale(.3f, .3f);
-//        imgs.add(img);
-//    }
+    public void addSpritePlus(SpritePlus img, boolean isShip){
+        if(isShip)
+            img.getSprite().rotate90(true);
+        //img.getSprite().rotate(90);
+
+        //img.getSprite().setScale(.3f, .3f);
+        imgs.add(img);
+    }
 
     /**
      * Adds sprite and location to list of things to render
@@ -47,7 +50,7 @@ public class SpriteDisplay
      * @param sprite
      * @param location
      */
-    public void addSpritePlus(Sprite sprite, Vector3 location){imgs.add(new SpritePlus(sprite,location));}
+    public void addSpritePlus(Sprite sprite, Vector3 location, SpritePlus.types type){imgs.add(new SpritePlus(sprite,location,type));}
     public ArrayList<SpritePlus> getSpritePluses() {
         return imgs;
     }
@@ -62,7 +65,9 @@ public class SpriteDisplay
         {
             sprite = spr.getSprite();
             location = spr.getLocation();
-            sprite.setRotation(location.z);
+            type = spr.getType();
+            if(type== SpritePlus.types.Projectile) sprite.setRotation((location.z+270)%360);
+            else sprite.setRotation(location.z);
             sprite.setX(location.x-sprite.getWidth()/2);
             sprite.setY(location.y-sprite.getHeight()/2);
 

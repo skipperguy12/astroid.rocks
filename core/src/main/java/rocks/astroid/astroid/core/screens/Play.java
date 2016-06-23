@@ -56,9 +56,36 @@ public class Play implements Screen {
         for(Projectile projectile: GlobalFunctions.projectiles) {
             projectile.update();
         }
+        removeProjectile();
 
         cam.update();
     }
+
+    /**
+     * remove all projectiles whose speed is 0
+     * prevents ConcurrentModificationException from editing list while looping
+     */
+    public void removeProjectile()
+    {
+        int loc = 0;
+        boolean checked = false;
+        while(!checked)
+        {
+            if (GlobalFunctions.projectiles.size()==0)
+                return;
+            for(;loc<GlobalFunctions.projectiles.size();loc++)
+            {
+                if(GlobalFunctions.projectiles.get(loc).getSpeed()==0)
+                {
+                    GlobalFunctions.projectiles.remove(loc);
+                    break;
+                }
+                if(loc==GlobalFunctions.projectiles.size()-1)
+                    checked=true;
+            }
+        }
+    }
+
 
 
     @Override

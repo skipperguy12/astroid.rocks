@@ -33,11 +33,6 @@ public class GlobalFunctions {
     public static void moveLaterally(Movable movable)
     {
         Vector3 temp = movable.getLocation();
-//        ship.setLocation(new Vector3(
-//                (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*ship.getSpeed())),
-//                (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*ship.getSpeed())),
-//                temp.z)
-//        );
         temp.x+= MathUtils.cos((float)Math.toRadians(temp.z))* movable.getSpeed();
         temp.y+= MathUtils.sin((float)Math.toRadians(temp.z))* movable.getSpeed();
     }

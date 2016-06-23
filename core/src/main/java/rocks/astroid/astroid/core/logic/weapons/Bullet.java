@@ -16,25 +16,29 @@ public class Bullet extends Projectile{
     private SpritePlus spritePlus;
 
     public Bullet(float shipSpeed, Vector3 location) {
-        super(50, shipSpeed+20, .3f + GlobalFunctions.friction);
+        super(50, shipSpeed+40, .3f + GlobalFunctions.friction);
         this.location = location;
-        spritePlus = new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location);
-        Play.getSpriteDisplay().addSpritePlus(spritePlus);
+        spritePlus = new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location, SpritePlus.types.Projectile);
+        Play.getSpriteDisplay().addSpritePlus(spritePlus,false);
         GlobalFunctions.projectiles.add(this);
     }
+
     @Override
     public void update() {
         super.update();
-        if(speed==0)
-        {
+        if (speed == 0)
             Play.getSpriteDisplay().removeSpritePlus(spritePlus);
-            GlobalFunctions.projectiles.remove(this);
-        }
-            GlobalFunctions.moveLaterally(this);
-            spritePlus.setLocation(location);
+        System.out.println(location.z);
+
+        GlobalFunctions.moveLaterally(this);
+        spritePlus.setLocation(location);
     }
-    public Vector3 getLocation() {return location;}
-    public void setLocation(Vector3 location){this.location=location;}
+    public Vector3 getLocation() {
+        return location;
+    }
+    public void setLocation(Vector3 location) {
+        this.location = location;
+    }
 
 
 
