@@ -1,11 +1,17 @@
 package rocks.astroid.astroid.core.logic.weapons;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.sun.xml.internal.ws.org.objectweb.asm.ClassAdapter;
 
 /**
  * Super class for weapons
  */
 public abstract class Projectile {
+    public enum Projectiles
+    {
+        Bullet
+    }
+
     //damage dealt by impact,
     private final float damage;
     private final float range;

@@ -30,7 +30,7 @@ public class Play implements Screen {
         ship.draw();
         cam.update();
 
-        //cam.position.set(ship.getShipLocation().x, ship.getShipLocation().y, 0);
+        //cam.position.set(ship.getLocation().x, ship.getLocation().y, 0);
         //cam.translate(ship.getMovementVector());
 
         batch.begin();
@@ -41,9 +41,9 @@ public class Play implements Screen {
         float mobility = ship.getThrust()/ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) ship.setSpeed(ship.getSpeed()+mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) ship.setSpeed(ship.getSpeed()- mobility * Gdx.graphics.getDeltaTime());
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) { ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
-        ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) { ship.getLocation().z+=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ ship.getLocation().z-=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
+        ship.getLocation().z= (ship.getLocation().z + 360)%360;
 
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             cam.zoom += .1;
@@ -75,8 +75,8 @@ public class Play implements Screen {
      */
     private void moveLaterally()
     {
-        Vector3 temp = ship.getShipLocation();
-        ship.setShipLocation(new Vector3(
+        Vector3 temp = ship.getLocation();
+        ship.setLocation(new Vector3(
                 (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*ship.getSpeed())),
                 (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*ship.getSpeed())),
                 temp.z)

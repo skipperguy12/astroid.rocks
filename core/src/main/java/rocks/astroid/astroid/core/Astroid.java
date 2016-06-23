@@ -8,8 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import rocks.astroid.astroid.core.client.GlobalFunctions;
+import rocks.astroid.astroid.core.client.SpriteDisplay;
+import rocks.astroid.astroid.core.logic.weapons.Projectile;
 import rocks.astroid.astroid.core.screens.Play;
 import rocks.astroid.astroid.core.screens.Splash;
+
+import java.util.ArrayList;
 
 public class Astroid extends Game {
 	public static final String TITLE = "astroid.rocks",
@@ -22,6 +27,7 @@ public class Astroid extends Game {
 	@Override
 	public void create () {
 		setScreen(new Play());
+		GlobalFunctions.projectiles = new ArrayList<Projectile>();
 		backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("background.mp3"));
 		backgroundMusic.play();
 	}
