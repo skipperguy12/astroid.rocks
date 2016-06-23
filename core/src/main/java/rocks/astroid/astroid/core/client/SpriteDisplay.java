@@ -3,6 +3,7 @@ package rocks.astroid.astroid.core.client;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.screens.Play;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class SpriteDisplay
     public SpriteDisplay()
     {
         imgs = new ArrayList<SpritePlus>();
-        batch = new SpriteBatch();
+        batch = Play.getSpriteBatch();
     }
     public boolean removeSpritePlus(SpritePlus spritePlus){
         return imgs.remove(spritePlus);
@@ -28,7 +29,17 @@ public class SpriteDisplay
      * Use for sprites that need location updated so that the SpritePlus object can be kept in the class of creation
      * @param img
      */
-    public void addSpritePlus(SpritePlus img){imgs.add(img);}
+    public void addSpritePlus(SpritePlus img){
+        img.getSprite().rotate90(true);
+       // img.getSprite().setScale(.3f, .3f);
+        imgs.add(img);
+    }
+//    public void addSpritePlus(SpritePlus img, boolean isShip){
+//        if(isShip)
+//            img.getSprite().rotate90(true);
+//        img.getSprite().setScale(.3f, .3f);
+//        imgs.add(img);
+//    }
 
     /**
      * Adds sprite and location to list of things to render
@@ -50,8 +61,6 @@ public class SpriteDisplay
         for(SpritePlus spr: imgs)
         {
             sprite = spr.getSprite();
-            sprite.setScale(.1f, .1f);
-            sprite.rotate90(true);
             location = spr.getLocation();
             sprite.setRotation(location.z);
             sprite.setX(location.x-sprite.getWidth()/2);

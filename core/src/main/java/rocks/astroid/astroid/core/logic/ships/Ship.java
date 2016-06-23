@@ -2,12 +2,13 @@ package rocks.astroid.astroid.core.logic.ships;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.Movable;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 
 /**
  * Abstract representation of a Ship object
  */
-public abstract class Ship {
+public abstract class Ship implements Movable {
     //Ship location vector will contain: x, y, and rotation in degrees.
     protected Vector3 location;
     //Speed of ship- defaults to 1
@@ -86,9 +87,10 @@ public abstract class Ship {
     public float getMass() {
         return mass;
     }
-    public void setMass(float mass) {
+     void setMass(float mass) {
         this.mass = mass;
     }
+    @Override
     public float getSpeed() {
         return speed;
     }
@@ -118,8 +120,7 @@ public abstract class Ship {
     {
         if(speed>0) speed-=GlobalFunctions.friction;
         if(speed<0) speed+=GlobalFunctions.friction;
-        System.out.println(speed);
-    }
+      }
 
     /**
      * location stored as a Vector3- xPos, yPos, and Rotation of the ship.

@@ -1,36 +1,31 @@
 package rocks.astroid.astroid.core.logic.weapons;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.sun.xml.internal.ws.org.objectweb.asm.ClassAdapter;
+import rocks.astroid.astroid.core.Movable;
 
 /**
  * Super class for weapons
  */
-public abstract class Projectile {
+public abstract class Projectile implements Movable {
     public enum Projectiles
     {
         Bullet
     }
 
     //damage dealt by impact,
-    private final float damage;
-    private final float range;
-    private final float intialSpeed;
-    private float speed;
+    protected final float damage;
+    //in number of renders
+    protected final float intialSpeed;
+    protected float speed;
     //decays speed
-    private float resistance;
-    public Projectile(float damage, float range, float intialSpeed, float resistance) {
+    protected float resistance;
+    public Projectile(float damage,  float intialSpeed, float resistance) {
         this.damage = damage;
-        this.range = range;
         this.intialSpeed = intialSpeed;
         this.resistance = resistance;
         speed = intialSpeed;
     }
     public float getDamage() {
         return damage;
-    }
-    public float getRange() {
-        return range;
     }
     public float getintialSpeed() {
         return intialSpeed;
@@ -41,10 +36,11 @@ public abstract class Projectile {
     public float getSpeed(){
         return speed;
     }
+    public void setSpeed(float speed){this.speed=speed;};
 
     public void update()
     {
-        speed-=resistance;
+        if(speed>0) speed-=resistance;
+        else speed=0;
     }
-    public abstract void draw();
 }

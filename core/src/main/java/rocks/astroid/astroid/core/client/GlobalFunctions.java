@@ -2,6 +2,9 @@ package rocks.astroid.astroid.core.client;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.Movable;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
@@ -23,5 +26,19 @@ public class GlobalFunctions {
             }
         }
         return sprite;
+    }
+    /**
+     * moves the movable either forwards or backwards based on speed
+     */
+    public static void moveLaterally(Movable movable)
+    {
+        Vector3 temp = movable.getLocation();
+//        ship.setLocation(new Vector3(
+//                (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*ship.getSpeed())),
+//                (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*ship.getSpeed())),
+//                temp.z)
+//        );
+        temp.x+= MathUtils.cos((float)Math.toRadians(temp.z))* movable.getSpeed();
+        temp.y+= MathUtils.sin((float)Math.toRadians(temp.z))* movable.getSpeed();
     }
 }
