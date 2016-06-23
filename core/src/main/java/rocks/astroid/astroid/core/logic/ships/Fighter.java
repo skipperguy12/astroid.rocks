@@ -4,12 +4,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.logic.weapons.Bullet;
+import rocks.astroid.astroid.core.logic.weapons.Projectile;
 
 /**
  * Fighter - the normal spaceship. Has high mobility, easy weapon (low damage, high frequency), blast ultimate to fire in all directions
  *      Can deploy “satellite” for healing teammates in a certain radius
  */
-public class Fighter extends Ship {
+public class Fighter extends CombatShip {
     private SpriteBatch batch;
     private Sprite ship;
 
@@ -21,7 +23,7 @@ public class Fighter extends Ship {
      */
     public Fighter(SpriteBatch batch, float x, float y, float rotation)
     {
-        super(x,y,rotation,10,1,1000,100);
+        super(x,y,rotation,10,1,1000,100, Projectile.Projectiles.Bullet, 5);
         this.batch = batch;
         ship = new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png"));
         ship.setScale(.1f, .1f);
