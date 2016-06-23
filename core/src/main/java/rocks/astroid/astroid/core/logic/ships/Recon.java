@@ -9,8 +9,4 @@ public class Recon extends CombatShip{
     public Recon(float x, float y, float rotation) {
         super(x, y, rotation, 15, 1, 500, 100, null,4);
     }
-    @Override
-    public void draw() {
-
-    }
 }

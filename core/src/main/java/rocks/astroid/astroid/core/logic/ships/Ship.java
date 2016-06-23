@@ -72,8 +72,6 @@ public abstract class Ship {
         team =  Team.values()[MathUtils.random(2)];
     }
 
-    public abstract void draw();
-
     public void update()
     {
         slow();

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.client.SpriteDisplay;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 
@@ -15,9 +16,21 @@ public class Play implements Screen {
 
     private OrthographicCamera cam;
     private float rotationSpeed;
-
+    private static SpriteDisplay spriteDisplay;
     private SpriteBatch batch;
     private Ship ship;
+
+    public Play()
+    {
+        spriteDisplay = new SpriteDisplay();
+        ship = new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0);
+    }
+    public static SpriteDisplay getSpriteDisplay()
+    {
+        return spriteDisplay;
+    }
+
+
 
     @Override
     public void render(float delta) {
@@ -27,14 +40,10 @@ public class Play implements Screen {
 
         moveLaterally();
         ship.update();
-        ship.draw();
         cam.update();
 
-        //cam.position.set(ship.getLocation().x, ship.getLocation().y, 0);
-        //cam.translate(ship.getMovementVector());
-
-        batch.begin();
-        batch.end();
+        //batch.begin();
+        //batch.end();
     }
 
     private void handleInput() {
@@ -92,12 +101,12 @@ public class Play implements Screen {
     @Override
     public void show() {
         rotationSpeed = 0.5f;
-        batch = new SpriteBatch();
+        //batch = new SpriteBatch();
 
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());//* (h / w)
         cam.update();
 
-        ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0);
+
     }
 
     @Override
