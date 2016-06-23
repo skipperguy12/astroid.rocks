@@ -10,38 +10,29 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import rocks.astroid.astroid.core.UserInput;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.client.SpriteDisplay;
+import rocks.astroid.astroid.core.logic.World;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
+
+import java.util.ArrayList;
 
 import static rocks.astroid.astroid.core.client.GlobalFunctions.moveLaterally;
 
 public class Play implements Screen {
 
     private OrthographicCamera cam;
-    private static SpriteDisplay spriteDisplay;
-    private static SpriteBatch batch;
-    private CombatShip ship;
+    private SpriteDisplay spriteDisplay;
+    private SpriteBatch batch;
+    private World world;
     private UserInput input;
 
-
-    public Play()
-    {
-        batch = new SpriteBatch();
-        spriteDisplay = new SpriteDisplay();
-        ship = new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0);
-        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        input = new UserInput(ship,cam);
-        Gdx.input.setInputProcessor(input);
-
-
-    }
-    public static SpriteDisplay getSpriteDisplay()
+    public SpriteDisplay getSpriteDisplay()
     {
         return spriteDisplay;
     }
-    public static SpriteBatch getSpriteBatch(){return batch;}
+    public SpriteBatch getSpriteBatch(){return batch;}
 
     @Override
     public void render(float delta) {
@@ -50,17 +41,17 @@ public class Play implements Screen {
         batch.setProjectionMatrix(cam.combined);
         input.handleInput(delta);
 
-        GlobalFunctions.moveLaterally(ship);
-        ship.update();
+        GlobalFunctions.moveLaterally(world.getPlayer());
+        world.getPlayer().update();
 
 
-        cam.position.set(ship.getLocation().x, ship.getLocation().y, 0);
+        cam.position.set(world.getPlayer().getLocation().x, world.getPlayer().getLocation().y, 0);
         cam.update();
 
 
         spriteDisplay.render();
 
-        for(Projectile projectile: GlobalFunctions.projectiles) {
+        for(Projectile projectile: getWorld().getProjectiles()) {
             projectile.update();
         }
         removeProjectile();
@@ -77,16 +68,16 @@ public class Play implements Screen {
         boolean checked = false;
         while(!checked)
         {
-            if (GlobalFunctions.projectiles.size()==0)
+            if (getWorld().getProjectiles().size()==0)
                 return;
-            for(;loc<GlobalFunctions.projectiles.size();loc++)
+            for(;loc<getWorld().getProjectiles().size();loc++)
             {
-                if(GlobalFunctions.projectiles.get(loc).getSpeed()==0)
+                if(getWorld().getProjectiles().get(loc).getSpeed()==0)
                 {
-                    GlobalFunctions.projectiles.remove(loc);
+                    getWorld().getProjectiles().remove(loc);
                     break;
                 }
-                if(loc==GlobalFunctions.projectiles.size()-1)
+                if(loc==getWorld().getProjectiles().size()-1)
                     checked=true;
             }
         }
@@ -103,7 +94,16 @@ public class Play implements Screen {
 
     @Override
     public void show() {
-        cam.update();
+
+
+        batch = new SpriteBatch();
+        spriteDisplay = new SpriteDisplay();
+
+        world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
+
+        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        input = new UserInput(world.getPlayer(),cam);
+        Gdx.input.setInputProcessor(input);
     }
 
     @Override
@@ -120,5 +120,9 @@ public class Play implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    public World getWorld() {
+        return world;
     }
 }

@@ -1,5 +1,7 @@
 package rocks.astroid.astroid.core.logic.ships;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.client.SpritePlus;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
@@ -23,7 +25,8 @@ public class Fighter extends CombatShip {
     public Fighter(float x, float y, float rotation) {
         super(x, y, rotation, 10, 1, 1000, 100, Projectile.Projectiles.Bullet, 10);
         this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.Ship);
-        Play.getSpriteDisplay().addSpritePlus(spritePlus);
+        System.out.println(((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay());
+        ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
     }
 
     @Override

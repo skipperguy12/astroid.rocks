@@ -1,5 +1,7 @@
 package rocks.astroid.astroid.core.logic.weapons;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,15 +21,15 @@ public class Bullet extends Projectile{
         super(50, shipSpeed+40, .3f + GlobalFunctions.friction);
         this.location = location;
         spritePlus = new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location, SpritePlus.types.Projectile);
-        Play.getSpriteDisplay().addSpritePlus(spritePlus,false);
-        GlobalFunctions.projectiles.add(this);
+        ((Play)((Game)Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus,false);
+        ((Play)((Game)Gdx.app.getApplicationListener()).getScreen()).getWorld().getProjectiles().add(this);
     }
 
     @Override
     public void update() {
         super.update();
         if (speed == 0)
-            Play.getSpriteDisplay().removeSpritePlus(spritePlus);
+            ((Play)((Game)Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().removeSpritePlus(spritePlus);
        // System.out.println(location.z);
 
         GlobalFunctions.moveLaterally(this);

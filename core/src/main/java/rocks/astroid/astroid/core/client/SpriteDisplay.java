@@ -1,5 +1,7 @@
 package rocks.astroid.astroid.core.client;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -20,7 +22,7 @@ public class SpriteDisplay
     public SpriteDisplay()
     {
         imgs = new ArrayList<SpritePlus>();
-        batch = Play.getSpriteBatch();
+        batch =  ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteBatch();
     }
     public boolean removeSpritePlus(SpritePlus spritePlus){
         return imgs.remove(spritePlus);
@@ -54,6 +56,7 @@ public class SpriteDisplay
     public ArrayList<SpritePlus> getSpritePluses() {
         return imgs;
     }
+    
     public void setSprites(ArrayList<SpritePlus> imgs) {
         this.imgs = imgs;
     }
