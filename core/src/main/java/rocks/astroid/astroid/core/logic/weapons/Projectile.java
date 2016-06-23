@@ -24,6 +24,12 @@ public abstract class Projectile implements Movable {
         this.resistance = resistance;
         speed = intialSpeed;
     }
+
+    /**
+     * TODO: find relative speed of projectile and multiply damage by the relative speed on impact
+     * @return
+     *
+     */
     public float getDamage() {
         return damage;
     }

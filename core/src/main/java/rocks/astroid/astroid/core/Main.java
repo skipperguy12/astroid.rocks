@@ -13,7 +13,7 @@ import rocks.astroid.astroid.core.screens.Play;
 
 import java.util.ArrayList;
 
-public class Astroid extends Game {
+public class Main extends Game {
 	public static final String TITLE = "astroid.rocks",
 								VERSION = "0.0.1";
 

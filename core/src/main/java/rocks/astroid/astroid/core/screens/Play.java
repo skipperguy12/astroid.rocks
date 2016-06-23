@@ -11,6 +11,7 @@ import rocks.astroid.astroid.core.UserInput;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.client.SpriteDisplay;
 import rocks.astroid.astroid.core.logic.World;
+import rocks.astroid.astroid.core.logic.astroids.Astroid;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
@@ -102,6 +103,10 @@ public class Play implements Screen {
         world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        cam.zoom += 2f;
+
+        new Astroid(Astroid.Astroids.RED, world.getPlayer().getLocation());
+
         input = new UserInput(world.getPlayer(),cam);
         Gdx.input.setInputProcessor(input);
     }

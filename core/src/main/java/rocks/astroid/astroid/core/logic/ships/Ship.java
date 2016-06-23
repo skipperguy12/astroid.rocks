@@ -1,9 +1,13 @@
 package rocks.astroid.astroid.core.logic.ships;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.Movable;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
+import rocks.astroid.astroid.core.client.SpritePlus;
+import rocks.astroid.astroid.core.screens.Play;
 
 /**
  * Abstract representation of a Ship object
@@ -22,32 +26,12 @@ public abstract class Ship implements Movable {
 
     protected float shields;
 
+    protected SpritePlus spritePlus;
+
     protected Team team;
 
     public   enum Team{
         RED, BLUE, PURPLE
-    }
-
-    /**
-     * Default constructor- should not typically be used
-     */
-    public Ship() {
-        location = new Vector3(0f, 0f, 0f);
-        thrust = 1;
-        mass = 1;
-        speed = 0;
-        team =  Team.values()[MathUtils.random(2)];
-    }
-
-    /**
-     * X, Y, Rotation values set- thrust set to default (1)
-     */
-    public Ship(float x, float y, float rotation) {
-        location = new Vector3(x, y, rotation);
-        thrust = 1;
-        mass = 1;
-        speed = 0;
-        team =  Team.values()[MathUtils.random(2)];
     }
 
     /**
@@ -61,21 +45,14 @@ public abstract class Ship implements Movable {
         team =  Team.values()[MathUtils.random(2)];
         this.hull = hull;
         this.shields = shields;
-    }
-
-    /**
-     * Takes ship location as a vector3
-     */
-    public Ship(Vector3 shipLocation, float thrust) {
-        this.location = shipLocation;
-        this.thrust = thrust;
-        speed = 0;
-        team =  Team.values()[MathUtils.random(2)];
+        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.Ship);
+        ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
     }
 
     public void update()
     {
         slow();
+        spritePlus.setLocation(this.location);
     }
 
     public float getThrust() {
@@ -87,7 +64,7 @@ public abstract class Ship implements Movable {
     public float getMass() {
         return mass;
     }
-     void setMass(float mass) {
+    public void setMass(float mass) {
         this.mass = mass;
     }
     @Override

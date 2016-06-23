@@ -18,7 +18,7 @@ public class Bullet extends Projectile{
     private SpritePlus spritePlus;
 
     public Bullet(float shipSpeed, Vector3 location) {
-        super(50, shipSpeed+40, .3f + GlobalFunctions.friction);
+        super(5, shipSpeed+40, .3f + GlobalFunctions.friction);
         this.location = location;
         spritePlus = new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location, SpritePlus.types.Projectile);
         ((Play)((Game)Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus,false);

@@ -12,7 +12,7 @@ import rocks.astroid.astroid.core.screens.Play;
 /**
  * A ship that has a mounted weapon
  */
-public abstract class CombatShip extends Ship{
+public abstract class CombatShip extends Ship {
 
     protected final Projectile.Projectiles projectileType;
     //number of times projectile is fired per second
@@ -24,25 +24,20 @@ public abstract class CombatShip extends Ship{
         this.projectileType = projectileType;
         this.fireRate = fireRate;
     }
-    public void fire(float delta ) {
+
+    public void fire(float delta) {
         this.timer += delta;
 
-        if(timer <  1.0f/getFireRate() ||  !Gdx.input.isKeyPressed(Input.Keys.SPACE))
+        if (timer < 1.0f / getFireRate() || !Gdx.input.isKeyPressed(Input.Keys.SPACE))
             return;
 
-
-        switch (projectileType)
-        {
+        switch (projectileType) {
             case Bullet:
-                //Bullet bill =
-                        new Bullet(speed, new Vector3(location.x,location.y,(location.z)%360));
-                //GlobalFunctions.projectiles.add(bill);
-                //System.out.println("bullet");
+                new Bullet(speed, new Vector3(location.x, location.y, (location.z) % 360));
                 break;
         }
 
         timer = 0;
-
     }
     public Projectile.Projectiles getProjectileType() {
         return projectileType;

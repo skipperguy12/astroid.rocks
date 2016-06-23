@@ -63,7 +63,7 @@ public class MainMenu implements Screen {
         table.setFillParent(true);
 
         // creating heading
-        //Label heading = new Label(Astroid.TITLE, skin, "big");
+        //Label heading = new Label(Main.TITLE, skin, "big");
         //heading.setFontScale(2);
 
         // creating buttons
