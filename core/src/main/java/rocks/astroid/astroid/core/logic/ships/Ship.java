@@ -10,10 +10,10 @@ import rocks.astroid.astroid.core.client.SpritePlus;
 import rocks.astroid.astroid.core.screens.Play;
 
 /**
- * Abstract representation of a Ship object
+ * Abstract representation of a SHIP object
  */
 public abstract class Ship implements Movable {
-    //Ship location vector will contain: x, y, and rotation in degrees.
+    //SHIP location vector will contain: x, y, and rotation in degrees.
     protected Vector3 location;
     //Speed of ship- defaults to 1
     protected float thrust;
@@ -45,7 +45,7 @@ public abstract class Ship implements Movable {
         team =  Team.values()[MathUtils.random(2)];
         this.hull = hull;
         this.shields = shields;
-        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.Ship);
+        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.SHIP);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
     }
 
@@ -95,8 +95,8 @@ public abstract class Ship implements Movable {
 
     public void slow()
     {
-        if(speed>0) speed-=GlobalFunctions.friction;
-        if(speed<0) speed+=GlobalFunctions.friction;
+        if(speed>0) speed-=GlobalFunctions.FRICTION;
+        if(speed<0) speed+=GlobalFunctions.FRICTION;
       }
 
     /**

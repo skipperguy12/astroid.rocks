@@ -12,7 +12,8 @@ import rocks.astroid.astroid.core.logic.weapons.Projectile;
 import java.util.ArrayList;
 
 public class GlobalFunctions {
-    public static final float friction = .003f;
+    public static final float FRICTION = .003f;
+    public static final float PROJECTILE_REMOVAL_SPEED = 15f;
     public static Sprite getSprite(Ship ship) {
         Sprite sprite = null;
         if(ship instanceof Fighter) {

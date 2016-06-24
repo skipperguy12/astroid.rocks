@@ -12,7 +12,7 @@ public class SpritePlus {
     private types type;
     public enum types
     {
-        Ship, Projectile
+        SHIP, PROJECTILE, ASTROID
     }
     public SpritePlus(Sprite sprite, Vector3 location,types type) {
         this.sprite = sprite;
@@ -36,5 +36,13 @@ public class SpritePlus {
     }
     public void setType(types type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "SpritePlus{" +
+                "location=" + location +
+                ", type=" + type +
+                '}';
     }
 }

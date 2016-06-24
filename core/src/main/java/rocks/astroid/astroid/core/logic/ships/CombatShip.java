@@ -33,10 +33,9 @@ public abstract class CombatShip extends Ship {
 
         switch (projectileType) {
             case Bullet:
-                new Bullet(speed, new Vector3(location.x, location.y, (location.z) % 360));
+                new Bullet(speed, location.cpy());
                 break;
         }
-
         timer = 0;
     }
     public Projectile.Projectiles getProjectileType() {
