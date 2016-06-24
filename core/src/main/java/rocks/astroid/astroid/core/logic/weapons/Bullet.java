@@ -14,10 +14,6 @@ import rocks.astroid.astroid.core.screens.Play;
  */
 public class Bullet extends Projectile{
     public Bullet(float shipSpeed, Vector3 location) {
-        super(5, 40, .3f ,shipSpeed,location,new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location, SpritePlus.types.PROJECTILE));
+        super(5, 70, .3f ,shipSpeed,location,new SpritePlus(new Sprite(new Texture("img/sprites/bullet.png")), location, SpritePlus.types.PROJECTILE));
     }
-
-
-
-
 }

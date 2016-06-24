@@ -37,7 +37,7 @@ public class SpriteDisplay
      * @param img
      */
     public void addSpritePlus(SpritePlus img){
-        //img.getSprite().setScale(.3f, .3f);
+        //img.getShipSprite().setScale(.3f, .3f);
         switch(img.getType())
         {
             case SHIP:
@@ -114,6 +114,12 @@ public class SpriteDisplay
     public void dispose()
     {
         batch.dispose();
+        for(SpritePlus spritePlus: astroids)
+            spritePlus.getSprite().getTexture().dispose();
+        for(SpritePlus spritePlus: ships)
+            spritePlus.getSprite().getTexture().dispose();
+        for(SpritePlus spritePlus: projectiles)
+            spritePlus.getSprite().getTexture().dispose();
     }
 
     public ArrayList<SpritePlus> getAstroids() {

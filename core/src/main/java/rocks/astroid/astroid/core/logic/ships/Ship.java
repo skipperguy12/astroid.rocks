@@ -45,7 +45,7 @@ public abstract class Ship implements Movable {
         team =  Team.values()[MathUtils.random(2)];
         this.hull = hull;
         this.shields = shields;
-        this.spritePlus = new SpritePlus(GlobalFunctions.getSprite(this), location, SpritePlus.types.SHIP);
+        this.spritePlus = new SpritePlus(GlobalFunctions.getShipSprite(this), location, SpritePlus.types.SHIP);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
     }
 

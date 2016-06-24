@@ -56,8 +56,8 @@ public class Play implements Screen {
         cam.position.set(world.getPlayer().getLocation().x, world.getPlayer().getLocation().y, 0);
         cam.update();
 
-        //projectileCheckRemove(); //TODO: USE THIS
-        projectileRemove();//TODO: OR THIS
+        projectileCheckRemove(); //TODO: USE THIS
+//        projectileRemove();//TODO: OR THIS
 
         spriteDisplay.render();
 
@@ -128,22 +128,21 @@ public class Play implements Screen {
         }
     }
 
-    /**
-     * TODO: choose to use either projectileRemove() or projectileCheckRemove(), (choose the more efficient one)
-     */
-    public void projectileRemove()
-    {
-        for(int i = remove.size()-1; i>=0;i--)
-        {
-            getWorld().getProjectiles().remove(remove.get(i));
-            remove.remove(i);
-        }
-    }
-    public void addToProjectileRemove(Projectile projectile)
-    {
-        remove.add(projectile);
-    }
-
+//    /**
+//     * TODO: choose to use either projectileRemove() or projectileCheckRemove(), (choose the more efficient one)
+//     */
+//    public void projectileRemove()
+//    {
+//        for(int i = remove.size()-1; i>=0;i--)
+//        {
+//            getWorld().getProjectiles().remove(remove.get(i));
+//            remove.remove(i);
+//        }
+//    }
+//    public void addToProjectileRemove(Projectile projectile)
+//    {
+//        remove.add(projectile);
+//    }
 
     public World getWorld() {
         return world;
@@ -156,6 +155,4 @@ public class Play implements Screen {
             new Astroid(temp);
         }
     }
-
-
 }

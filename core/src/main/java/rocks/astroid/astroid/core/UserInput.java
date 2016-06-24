@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 
 /**
@@ -25,7 +26,7 @@ public class UserInput extends InputAdapter {
         float mobility = ship.getThrust() / ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
-            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue_fire.png")));
+            ship.getSpritePlus().setSprite(GlobalFunctions.getMovingShipSprite(ship));
         }
 //        if (Gdx.input.getInputProcessor().keyUp(Input.Keys.UP)) {
 //            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png")));
@@ -35,11 +36,11 @@ public class UserInput extends InputAdapter {
             ship.setSpeed(ship.getSpeed() - mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             ship.getLocation().z += mobility * Gdx.graphics.getDeltaTime() * 15;
-            ship.setSpeed((float) (ship.getSpeed() * .99));
+            ship.setSpeed((float) (ship.getSpeed() * .995));
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             ship.getLocation().z -= mobility * Gdx.graphics.getDeltaTime() * 15;
-            ship.setSpeed((float) (ship.getSpeed() * .99));
+            ship.setSpeed((float) (ship.getSpeed() * .995));
         }
         ship.getLocation().z = (ship.getLocation().z + 360) % 360;
 
@@ -78,9 +79,10 @@ public class UserInput extends InputAdapter {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        if(keycode==Input.Keys.UP)
-            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png")));
+    public boolean keyUp(int keycode) {
+        if(keycode==Input.Keys.UP) {
+            ship.getSpritePlus().setSprite(GlobalFunctions.getShipSprite(ship));
+        }
         return super.keyUp(keycode);
     }
 //    @Override

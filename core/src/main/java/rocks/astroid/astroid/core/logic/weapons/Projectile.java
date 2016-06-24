@@ -28,11 +28,11 @@ public abstract class Projectile implements Movable {
         Bullet
     }
 
-    public Projectile(float damage,  float initialSpeed, float resistance, float shipSpeed, Vector3 location, SpritePlus spritePlus) {
+    public Projectile(float damage,  float intialSpeed, float resistance, float shipSpeed, Vector3 location, SpritePlus spritePlus) {
         this.damage = damage;
-        this.intialSpeed = initialSpeed+shipSpeed;
+        this.intialSpeed = intialSpeed+shipSpeed;
         this.resistance = resistance+GlobalFunctions.FRICTION;
-        speed = initialSpeed;
+        speed = this.intialSpeed;
         this.location = location;
         this.spritePlus = spritePlus;
         ((Play)((Game)Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
@@ -71,10 +71,9 @@ public abstract class Projectile implements Movable {
 
         if (speed<=GlobalFunctions.PROJECTILE_REMOVAL_SPEED) {
             ((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().removeSpritePlus(spritePlus);
-            System.out.println(speed);
-            ((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).addToProjectileRemove(this);//TODO: USED IN projectileRemove() IN Play
+            //System.out.println(speed);
+            //((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).addToProjectileRemove(this);//TODO: USED IN projectileRemove() IN Play
         }
-
         GlobalFunctions.moveLaterally(this);
         spritePlus.setLocation(location);
     }
