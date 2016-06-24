@@ -92,6 +92,12 @@ public abstract class Ship implements Movable {
     public void setShields(float shields) {
         this.shields = shields;
     }
+    public SpritePlus getSpritePlus() {
+        return spritePlus;
+    }
+    public void setSpritePlus(SpritePlus spritePlus) {
+        this.spritePlus = spritePlus;
+    }
 
     public void slow()
     {

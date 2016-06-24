@@ -23,6 +23,7 @@ public class SpritePlus {
         return sprite;
     }
     public void setSprite(Sprite sprite) {
+        if(type==types.SHIP) sprite.rotate90(true);
         this.sprite = sprite;
     }
     public Vector3 getLocation() {

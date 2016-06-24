@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 
 /**
@@ -18,13 +20,17 @@ public class UserInput extends InputAdapter {
         this.ship = ship;
         this.cam = cam;
     }
-
-
     public void handleInput(float delta) {
 
         float mobility = ship.getThrust() / ship.getMass();
-        if (Gdx.input.isKeyPressed(Input.Keys.UP))
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
+            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue_fire.png")));
+        }
+//        if (Gdx.input.getInputProcessor().keyUp(Input.Keys.UP)) {
+//            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png")));
+//        }
+
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN))
             ship.setSpeed(ship.getSpeed() - mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -36,6 +42,7 @@ public class UserInput extends InputAdapter {
             ship.setSpeed((float) (ship.getSpeed() * .99));
         }
         ship.getLocation().z = (ship.getLocation().z + 360) % 360;
+
 //        if (Gdx.input.getInputProcessor() != null && Gdx.input.getInputProcessor().keyDown(Input.Keys.SPACE)) {
 //            System.out.println("hi");
 //            ship.fire();
@@ -67,15 +74,22 @@ public class UserInput extends InputAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_3)) {
             cam.rotate(1f, 0, 0, 1);
         }
+
     }
 
-
-
-
-
-
-
-//    public boolean keyDown (int keycode) {
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode==Input.Keys.UP)
+            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png")));
+        return super.keyUp(keycode);
+    }
+//    @Override
+//    public boolean keyUp(int keycode) {
+//        if(keycode==Input.Keys.UP)
+//            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue_fire.png")));
+//        return super.keyUp(keycode);
+//    }
+    //    public boolean keyDown (int keycode) {
 //        if(keycode== Input.Keys.SPACE) {
 //            System.out.println("bye");
 //            ship.fire();
