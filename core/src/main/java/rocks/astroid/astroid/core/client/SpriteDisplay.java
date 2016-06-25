@@ -19,6 +19,7 @@ public class SpriteDisplay
     private ArrayList<SpritePlus> ships;
     private ArrayList<SpritePlus> projectiles;
     private ArrayList<SpritePlus> astroids;
+    //private ArrayList<SpritePlus> stars;
     private Sprite sprite;
     private Vector3 location;
     private SpritePlus.types type;
@@ -28,6 +29,7 @@ public class SpriteDisplay
         ships = new ArrayList<SpritePlus>();
         projectiles = new ArrayList<SpritePlus>();
         astroids = new ArrayList<SpritePlus>();
+        //stars = new ArrayList<SpritePlus>();
         batch =  ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteBatch();
     }
 
