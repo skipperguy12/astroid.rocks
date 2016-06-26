@@ -15,6 +15,7 @@ import rocks.astroid.astroid.core.logic.Ship;
 public class Play implements Screen {
     private SpriteBatch batch;
     private ShipMover player;
+    private PhysicsScene physicsScene;
 
     @Override
     public void render(float delta) {
