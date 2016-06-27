@@ -6,13 +6,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
+import rocks.astroid.astroid.core.Interactable;
 import rocks.astroid.astroid.core.client.SpritePlus;
 import rocks.astroid.astroid.core.screens.Play;
 
 /**
  * powerup pickup
  */
-public class Astroid {
+public class Astroid implements Interactable {
     protected SpritePlus spritePlus;
     protected Vector3 location;
     protected Astroids type;

@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 /**
  * Has speed and can be moved
  */
-public interface Movable {
+public interface Movable extends Interactable {
     public float getSpeed();
     public void setSpeed(float speed);
     public Vector3 getLocation();

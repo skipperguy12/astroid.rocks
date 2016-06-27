@@ -1,6 +1,7 @@
 package rocks.astroid.astroid.physics;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class PhysicsScene
@@ -18,8 +19,9 @@ public class PhysicsScene
 		this.iterations = iterations;
 	}
 
-	public void step()
+	public void step(float dt)
 	{
+		this.dt = dt;
 		// Generate new collision info
 		contacts.clear();
 		for (int i = 0; i < bodies.size(); ++i)
@@ -89,7 +91,7 @@ public class PhysicsScene
 
 	public Body add(Shape shape, float x, float y, float orientation)
 	{
-		Body b = new Body( shape, x, y, orientation );
+		Body b = new Body(shape, x, y, orientation);
 		bodies.add(b);
 		return b;
 	}

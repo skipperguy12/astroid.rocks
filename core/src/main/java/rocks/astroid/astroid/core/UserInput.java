@@ -31,7 +31,7 @@ public class UserInput extends InputAdapter {
         float mobility = ship.getThrust() / ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
-            ship.getSpritePlus().setSprite(GlobalFunctions.getMovingShipSprite(ship));
+            //ship.getSpritePlus().setSprite(GlobalFunctions.getMovingShipSprite(ship));
         }
 //        if (Gdx.input.getInputProcessor().keyUp(Input.Keys.UP)) {
 //            ship.getSpritePlus().setSprite(new Sprite(new Texture("img/sprites/ships/fighter/ship_blue.png")));
@@ -91,7 +91,7 @@ public class UserInput extends InputAdapter {
     @Override
     public boolean keyUp(int keycode) {
         if(keycode==Input.Keys.UP) {
-            ship.getSpritePlus().setSprite(GlobalFunctions.getShipSprite(ship));
+            //ship.getSpritePlus().setSprite(GlobalFunctions.getShipSprite(ship));
         }
         return super.keyUp(keycode);
     }

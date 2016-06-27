@@ -29,8 +29,6 @@ public class Play implements Screen {
     private World world;
     private UserInput input;
 
-    private PhysicsScene physicsScene;
-
 
     public SpriteDisplay getSpriteDisplay()
     {
@@ -49,6 +47,8 @@ public class Play implements Screen {
 
         batch.setProjectionMatrix(cam.combined);
         input.handleInput(delta);
+
+        getWorld().getPhysicsScene().step(delta);
 
         for(Astroid astroid: getWorld().getAstroids()) astroid.update();
         for(Projectile projectile: getWorld().getProjectiles()) projectile.update();
@@ -83,7 +83,6 @@ public class Play implements Screen {
     public void show() {
         batch = new SpriteBatch();
         spriteDisplay = new SpriteDisplay();
-        physicsScene = new PhysicsScene(0, 0);
 
         world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
@@ -110,6 +109,7 @@ public class Play implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        getSpriteDisplay().dispose();
     }
 
     /**

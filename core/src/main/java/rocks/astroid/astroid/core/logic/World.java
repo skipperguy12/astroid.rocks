@@ -56,5 +56,10 @@ public class World {
         this.player = player;
     }
 
+    public PhysicsScene getPhysicsScene() {
+        return physicsScene;
+    }
+
+
 
 }
