@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.ShipMover;
 import rocks.astroid.astroid.core.logic.Fighter;
 import rocks.astroid.astroid.core.logic.Ship;
+import rocks.astroid.astroid.physics.PhysicsScene;
 
 public class Play implements Screen {
     private SpriteBatch batch;

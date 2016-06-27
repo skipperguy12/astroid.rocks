@@ -27,8 +27,8 @@
 		</dependency>
 		<dependency>
 			<groupId>rocks.astroid</groupId>
-			<artifactId>physics</artifactId>
-			<version>4.0.0</version>
+			<artifactId>astroid-physics</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
