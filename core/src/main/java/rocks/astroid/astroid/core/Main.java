@@ -1,17 +1,19 @@
 package rocks.astroid.astroid.core;
 
-import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import rocks.astroid.astroid.core.client.GlobalFunctions;
+import rocks.astroid.astroid.core.logic.weapons.Projectile;
 import rocks.astroid.astroid.core.screens.Play;
-import rocks.astroid.astroid.core.screens.Splash;
 
-public class Astroid extends Game {
+import java.util.ArrayList;
+
+public class Main extends Game {
 	public static final String TITLE = "astroid.rocks",
 								VERSION = "0.0.1";
 

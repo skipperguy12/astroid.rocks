@@ -1,86 +1,69 @@
 package rocks.astroid.astroid.core.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
-import rocks.astroid.astroid.core.logic.Fighter;
-import rocks.astroid.astroid.core.logic.Ship;
+import rocks.astroid.astroid.core.UserInput;
+import rocks.astroid.astroid.core.client.GlobalFunctions;
+import rocks.astroid.astroid.core.client.SpriteDisplay;
+import rocks.astroid.astroid.core.logic.World;
+import rocks.astroid.astroid.core.logic.astroids.Astroid;
+import rocks.astroid.astroid.core.logic.ships.Fighter;
+import rocks.astroid.astroid.core.logic.weapons.Projectile;
+
+import java.util.ArrayList;
+
+import static rocks.astroid.astroid.core.client.GlobalFunctions.PROJECTILE_REMOVAL_SPEED;
 
 public class Play implements Screen {
 
+    private ArrayList<Projectile> remove;
     private OrthographicCamera cam;
-    private float rotationSpeed;
-
+    private SpriteDisplay spriteDisplay;
     private SpriteBatch batch;
-    private Ship ship;
+    private World world;
+    private UserInput input;
 
+    public SpriteDisplay getSpriteDisplay()
+    {
+        return spriteDisplay;
+    }
+    public SpriteBatch getSpriteBatch(){return batch;}
+
+    /**
+     * order from front to back:
+     * ship, projectiles, astroids
+     * @param delta
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.setProjectionMatrix(cam.combined);
-        handleInput();
 
-        moveLaterally();
-        ship.update();
-        ship.draw();
+        batch.setProjectionMatrix(cam.combined);
+        input.handleInput(delta);
+
+        for(Astroid astroid: getWorld().getAstroids()) astroid.update();
+        for(Projectile projectile: getWorld().getProjectiles()) projectile.update();
+
+        GlobalFunctions.moveLaterally(world.getPlayer());
+        world.getPlayer().update();
+
+        //follow player
+        cam.position.set(world.getPlayer().getLocation().x, world.getPlayer().getLocation().y, 0);
         cam.update();
 
-        //cam.position.set(ship.getShipLocation().x, ship.getShipLocation().y, 0);
-        //cam.translate(ship.getMovementVector());
+        projectileCheckRemove(); //TODO: USE THIS
+//        projectileRemove();//TODO: OR THIS
 
-        batch.begin();
-        batch.end();
+        spriteDisplay.render();
+
+        //System.out.println(Gdx.graphics.getFramesPerSecond());
     }
 
-    private void handleInput() {
-        float mobility = ship.getThrust()/ship.getMass();
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) ship.setSpeed(ship.getSpeed()+mobility * Gdx.graphics.getDeltaTime());
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) ship.setSpeed(ship.getSpeed()- mobility * Gdx.graphics.getDeltaTime());
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) { ship.getShipLocation().z+=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){ ship.getShipLocation().z-=mobility * Gdx.graphics.getDeltaTime()*15;ship.setSpeed((float) (ship.getSpeed()*.99));}
-        ship.getShipLocation().z= (ship.getShipLocation().z + 360)%360;
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
-            cam.zoom += .1;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_9)) {
-            cam.zoom -= .1;
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
-            cam.translate(-5, 0, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_6)) {
-            cam.translate(5, 0, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_2)) {
-            cam.translate(0, -5, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_8)) {
-            cam.translate(0, 5, 0);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1)) {
-            cam.rotate(-rotationSpeed, 0, 0, 1);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_3)) {
-            cam.rotate(rotationSpeed, 0, 0, 1);
-        }
-    }
-    /**
-     * moves the ship either forwards or backwards based on speed
-     */
-    private void moveLaterally()
-    {
-        Vector3 temp = ship.getShipLocation();
-        ship.setShipLocation(new Vector3(
-                (int) (temp.x+ (MathUtils.cos((float)Math.toRadians(temp.z))*ship.getSpeed())),
-                (int) (temp.y+ (MathUtils.sin((float)Math.toRadians(temp.z))*ship.getSpeed())),
-                temp.z)
-        );
-    }
     @Override
     public void resize(int width, int height) {
         cam.viewportWidth = width;
@@ -90,29 +73,86 @@ public class Play implements Screen {
 
     @Override
     public void show() {
-        rotationSpeed = 0.5f;
         batch = new SpriteBatch();
+        spriteDisplay = new SpriteDisplay();
 
-        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());//* (h / w)
-        cam.update();
+        world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
-        //ship = new Player(new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100));
-        ship = new Fighter(batch, Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0,10,1,1000,100);
+        cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        cam.zoom += 3f;
+
+        //new Astroid(world.getPlayer().getLocation().cpy());
+        generateAstroidsAroundPlayer();
+
+        input = new UserInput(world.getPlayer(),cam);
+        Gdx.input.setInputProcessor(input);//not necessary?
+
+        remove = new ArrayList<Projectile>();
     }
 
     @Override
     public void hide() {
         dispose();
     }
-
     @Override
     public void pause() {}
-
     @Override
     public void resume() {}
-
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    /**
+     * remove all projectiles whose speed is less than or equal to PROJECTILE_REMOVAL_SPEED
+     * prevents ConcurrentModificationException from editing list while looping
+     */
+    public void projectileCheckRemove()
+    {
+        int loc = 0;
+        boolean checked = false;
+        while(!checked)
+        {
+            if (getWorld().getProjectiles().size()==0)
+                return;
+            for(;loc<getWorld().getProjectiles().size();loc++)
+            {
+                if(getWorld().getProjectiles().get(loc).getSpeed()<=PROJECTILE_REMOVAL_SPEED)
+                {
+                    getWorld().getProjectiles().remove(loc);
+                    break;
+                }
+                if(loc==getWorld().getProjectiles().size()-1)
+                    checked=true;
+            }
+        }
+    }
+
+//    /**
+//     * TODO: choose to use either projectileRemove() or projectileCheckRemove(), (choose the more efficient one)
+//     */
+//    public void projectileRemove()
+//    {
+//        for(int i = remove.size()-1; i>=0;i--)
+//        {
+//            getWorld().getProjectiles().remove(remove.get(i));
+//            remove.remove(i);
+//        }
+//    }
+//    public void addToProjectileRemove(Projectile projectile)
+//    {
+//        remove.add(projectile);
+//    }
+
+    public World getWorld() {
+        return world;
+    }
+    public void generateAstroidsAroundPlayer(){
+        for(int i = 0;i<100;i++)
+        {
+            Vector3 temp = world.getPlayer().getLocation().cpy();
+            temp.add(MathUtils.random(-10000,10000),MathUtils.random(-10000,10000),MathUtils.random(360));
+            new Astroid(temp);
+        }
     }
 }

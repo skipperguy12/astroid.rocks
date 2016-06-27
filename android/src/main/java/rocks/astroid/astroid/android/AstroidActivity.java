@@ -1,6 +1,6 @@
 package rocks.astroid.astroid.android;
 
-import rocks.astroid.astroid.core.Astroid;
+import rocks.astroid.astroid.core.Main;
 
 import android.os.Bundle;
 
@@ -13,6 +13,6 @@ public class AstroidActivity extends AndroidApplication {
 	public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-			initialize(new Astroid(), config);
+			initialize(new Main(), config);
 	}
 }

@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -22,9 +21,6 @@ import aurelienribon.tweenengine.Timeline;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
 import aurelienribon.tweenengine.TweenManager;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import rocks.astroid.astroid.core.Astroid;
 
 public class MainMenu implements Screen {
 
@@ -67,7 +63,7 @@ public class MainMenu implements Screen {
         table.setFillParent(true);
 
         // creating heading
-        //Label heading = new Label(Astroid.TITLE, skin, "big");
+        //Label heading = new Label(Main.TITLE, skin, "big");
         //heading.setFontScale(2);
 
         // creating buttons
