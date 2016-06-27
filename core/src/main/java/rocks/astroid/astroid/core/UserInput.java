@@ -1,13 +1,18 @@
 package rocks.astroid.astroid.core;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
+import rocks.astroid.astroid.core.screens.Play;
+
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 /**
  * Takes input from player
@@ -48,6 +53,11 @@ public class UserInput extends InputAdapter {
 //            System.out.println("hi");
 //            ship.fire();
 //        }
+
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            Vector3 asdf = ((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).getMousePosInGameWorld();
+            System.out.println("asdf = " + asdf);
+        }
 
         ship.fire(delta);
 

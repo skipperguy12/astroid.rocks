@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class GlobalFunctions {
     public static final float FRICTION = .003f;
     public static final float PROJECTILE_REMOVAL_SPEED = 25f;
+
+    public static final float METERS_TO_PIXELS = 10.0f;
+
+    public static final float PIXELS_TO_METERS = 1/METERS_TO_PIXELS;
+
     public static Sprite getShipSprite(Ship ship) {
         Sprite sprite = null;
         if(ship instanceof Fighter) {

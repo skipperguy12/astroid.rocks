@@ -9,6 +9,7 @@ public class PhysicsScene
 	public float dt;
 	public int iterations;
 	public ArrayList<Body> bodies = new ArrayList<Body>();
+	//public Hashtable<Integer, Body> bodies = new Hashtable<Integer, Body>(120, .8f);
 	public ArrayList<Manifold> contacts = new ArrayList<Manifold>();
 
 	public PhysicsScene( float dt, int iterations )
@@ -86,10 +87,10 @@ public class PhysicsScene
 		}
 	}
 
-	public Body add( Shape shape, int x, int y )
+	public Body add(Shape shape, float x, float y, float orientation)
 	{
-		Body b = new Body( shape, x, y );
-		bodies.add( b );
+		Body b = new Body( shape, x, y, orientation );
+		bodies.add(b);
 		return b;
 	}
 

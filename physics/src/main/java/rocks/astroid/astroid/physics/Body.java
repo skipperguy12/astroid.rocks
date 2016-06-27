@@ -3,9 +3,9 @@ package rocks.astroid.astroid.physics;
 public class Body
 {
 
-	public final Vec2 position = new Vec2();
-	public final Vec2 velocity = new Vec2();
-	public final Vec2 force = new Vec2();
+	public Vec2 position = new Vec2();
+	public Vec2 velocity = new Vec2();
+	public Vec2 force = new Vec2();
 	public float angularVelocity;
 	public float torque;
 	public float orient;
@@ -15,7 +15,7 @@ public class Body
 	public float restitution;
 	public final Shape shape;
 
-	public Body( Shape shape, int x, int y )
+	public Body( Shape shape, float x, float y, float orientation)
 	{
 		this.shape = shape;
 
@@ -23,7 +23,7 @@ public class Body
 		velocity.set( 0, 0 );
 		angularVelocity = 0;
 		torque = 0;
-		orient = Globals.random( -Globals.PI, Globals.PI );
+		orient = orientation;
 		force.set( 0, 0 );
 		staticFriction = 0.5f;
 		dynamicFriction = 0.3f;

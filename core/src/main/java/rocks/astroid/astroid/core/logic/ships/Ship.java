@@ -8,6 +8,7 @@ import rocks.astroid.astroid.core.Movable;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.client.SpritePlus;
 import rocks.astroid.astroid.core.screens.Play;
+import rocks.astroid.astroid.physics.Body;
 
 /**
  * Abstract representation of a SHIP object
@@ -27,6 +28,8 @@ public abstract class Ship implements Movable {
     protected float shields;
 
     protected SpritePlus spritePlus;
+
+    protected Body body;
 
     protected Team team;
 

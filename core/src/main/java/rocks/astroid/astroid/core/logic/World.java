@@ -4,6 +4,7 @@ import rocks.astroid.astroid.core.logic.astroids.Astroid;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
+import rocks.astroid.astroid.physics.PhysicsScene;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,12 +15,14 @@ public class World {
     private List<Projectile> projectiles;
     private Collection<Ship> clients;
     private CombatShip player;
+    private PhysicsScene physicsScene;
 
     public World(CombatShip player) {
         this.projectiles = new ArrayList<Projectile>();
         this.clients = new ArrayList<Ship>();
         this.player = player;
         this.astroids = new ArrayList<Astroid>();
+        this.physicsScene = new PhysicsScene(0f, 0);
     }
 
     public List<Projectile> getProjectiles() {

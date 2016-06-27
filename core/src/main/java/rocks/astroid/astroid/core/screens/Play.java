@@ -68,6 +68,10 @@ public class Play implements Screen {
         //System.out.println(Gdx.graphics.getFramesPerSecond());
     }
 
+    public Vector3 getMousePosInGameWorld() {
+        return cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
+    }
+
     @Override
     public void resize(int width, int height) {
         cam.viewportWidth = width;
@@ -79,6 +83,7 @@ public class Play implements Screen {
     public void show() {
         batch = new SpriteBatch();
         spriteDisplay = new SpriteDisplay();
+        physicsScene = new PhysicsScene(0, 0);
 
         world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
