@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class Vec2
 {
@@ -304,7 +304,7 @@ public class Vec2
 	{
 		float lenSq = lengthSq();
 
-		if (lenSq > ImpulseMath.EPSILON_SQ)
+		if (lenSq > Globals.EPSILON_SQ)
 		{
 			float invLen = 1.0f / (float)StrictMath.sqrt( lenSq );
 			x *= invLen;

@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public interface CollisionCallback
 {

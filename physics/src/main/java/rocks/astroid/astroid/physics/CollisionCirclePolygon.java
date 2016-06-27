@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class CollisionCirclePolygon implements CollisionCallback
 {
@@ -45,7 +45,7 @@ public class CollisionCirclePolygon implements CollisionCallback
 		Vec2 v2 = B.vertices[i2];
 
 		// Check to see if center is within polygon
-		if (separation < ImpulseMath.EPSILON)
+		if (separation < Globals.EPSILON)
 		{
 			// m->contact_count = 1;
 			// m->normal = -(B->u * B->m_normals[faceNormal]);

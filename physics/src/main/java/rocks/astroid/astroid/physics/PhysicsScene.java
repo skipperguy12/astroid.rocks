@@ -1,9 +1,9 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 import java.util.ArrayList;
 
 
-public class ImpulseScene
+public class PhysicsScene
 {
 
 	public float dt;
@@ -11,7 +11,7 @@ public class ImpulseScene
 	public ArrayList<Body> bodies = new ArrayList<Body>();
 	public ArrayList<Manifold> contacts = new ArrayList<Manifold>();
 
-	public ImpulseScene( float dt, int iterations )
+	public PhysicsScene( float dt, int iterations )
 	{
 		this.dt = dt;
 		this.iterations = iterations;
@@ -127,7 +127,7 @@ public class ImpulseScene
 		float dts = dt * 0.5f;
 
 		b.velocity.addsi( b.force, b.invMass * dts );
-		b.velocity.addsi( ImpulseMath.GRAVITY, dts );
+		b.velocity.addsi( Globals.GRAVITY, dts );
 		b.angularVelocity += b.torque * b.invInertia * dts;
 	}
 

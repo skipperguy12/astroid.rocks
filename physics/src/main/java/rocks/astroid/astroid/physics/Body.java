@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class Body
 {
@@ -23,7 +23,7 @@ public class Body
 		velocity.set( 0, 0 );
 		angularVelocity = 0;
 		torque = 0;
-		orient = ImpulseMath.random( -ImpulseMath.PI, ImpulseMath.PI );
+		orient = Globals.random( -Globals.PI, Globals.PI );
 		force.set( 0, 0 );
 		staticFriction = 0.5f;
 		dynamicFriction = 0.3f;

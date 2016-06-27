@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class Manifold
 {
@@ -55,7 +55,7 @@ public class Manifold
 			// The idea is if the only thing moving this object is gravity,
 			// then the collision should be performed without any restitution
 			// if(rv.LenSqr( ) < (dt * gravity).LenSqr( ) + EPSILON)
-			if (rv.lengthSq() < ImpulseMath.RESTING)
+			if (rv.lengthSq() < Globals.RESTING)
 			{
 				e = 0.0f;
 			}
@@ -66,7 +66,7 @@ public class Manifold
 	{
 		// Early out and positional correct if both objects have infinite mass
 		// if(Equal( A->im + B->im, 0 ))
-		if (ImpulseMath.equal( A.invMass + B.invMass, 0 ))
+		if (Globals.equal( A.invMass + B.invMass, 0 ))
 		{
 			infiniteMassCorrection();
 			return;
@@ -130,7 +130,7 @@ public class Manifold
 			jt /= contactCount;
 
 			// Don't apply tiny friction impulses
-			if (ImpulseMath.equal( jt, 0.0f ))
+			if (Globals.equal( jt, 0.0f ))
 			{
 				return;
 			}
@@ -166,7 +166,7 @@ public class Manifold
 		// A->position -= correction * A->im;
 		// B->position += correction * B->im;
 
-		float correction = StrictMath.max( penetration - ImpulseMath.PENETRATION_ALLOWANCE, 0.0f ) / (A.invMass + B.invMass) * ImpulseMath.PENETRATION_CORRETION;
+		float correction = StrictMath.max( penetration - Globals.PENETRATION_ALLOWANCE, 0.0f ) / (A.invMass + B.invMass) * Globals.PENETRATION_CORRETION;
 
 		A.position.addsi( normal, -A.invMass * correction );
 		B.position.addsi( normal, B.invMass * correction );

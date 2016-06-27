@@ -1,6 +1,6 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
-public class ImpulseMath
+public class Globals
 {
 
 	public static final float PI = (float)StrictMath.PI;

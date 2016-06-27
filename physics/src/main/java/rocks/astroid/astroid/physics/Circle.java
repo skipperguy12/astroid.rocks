@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class Circle extends Shape
 {
@@ -23,7 +23,7 @@ public class Circle extends Shape
 	@Override
 	public void computeMass( float density )
 	{
-		body.mass = ImpulseMath.PI * radius * radius * density;
+		body.mass = Globals.PI * radius * radius * density;
 		body.invMass = (body.mass != 0.0f) ? 1.0f / body.mass : 0.0f;
 		body.inertia = body.mass * radius * radius;
 		body.invInertia = (body.inertia != 0.0f) ? 1.0f / body.inertia : 0.0f;

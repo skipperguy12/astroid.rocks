@@ -1,4 +1,4 @@
-package org.magnos.impulse;
+package rocks.astroid.astroid.physics;
 
 public class CollisionPolygonPolygon implements CollisionCallback
 {
@@ -35,7 +35,7 @@ public class CollisionPolygonPolygon implements CollisionCallback
 		Polygon IncPoly; // Incident
 
 		// Determine which shape contains reference face
-		if (ImpulseMath.gt( penetrationA, penetrationB ))
+		if (Globals.gt( penetrationA, penetrationB ))
 		{
 			RefPoly = A;
 			IncPoly = B;
