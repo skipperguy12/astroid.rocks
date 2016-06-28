@@ -28,14 +28,8 @@ public abstract class Ship implements Interactable {
         RED, BLUE, PURPLE
     }
 
-    /**
-     * This is the typical use constructor- location, thrust and mass
-     */
     public Ship(float x, float y, float rotation, float hull, float shields, Polygon shape) {
-        //location = new Vector3(x, y, rotation);
-//        this.thrust = thrust;
-//        this.mass = mass;
-//        speed = 0;
+
         team =  Team.values()[MathUtils.random(2)];
         this.hull = hull;
         this.shields = shields;

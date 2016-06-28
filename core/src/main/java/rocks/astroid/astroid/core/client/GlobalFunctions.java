@@ -77,5 +77,9 @@ public class GlobalFunctions {
             ((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).getWorld().getPhysicsScene().remove(table.get(key));
             table.remove(key);
         }
+        public static void displayTable(){
+            table.keySet();
+        }
+
     }
 }

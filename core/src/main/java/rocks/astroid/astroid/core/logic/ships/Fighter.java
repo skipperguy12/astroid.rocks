@@ -11,20 +11,6 @@ import rocks.astroid.astroid.physics.Vec2;
  *      Can deploy “satellite” for healing teammates in a certain radius
  */
 public class Fighter extends CombatShip {
-
-
-    /*
-    15.0,34.76
-    15.0,18.0
-    23.0,1.78
-    28.6,12.44
-    28.6,10.04
-    23.0,4.68
-    15.0,4.44
-    15.0,-12.52
-    60,11.3
-     */
-
     /**
      * creates a fighter
      *

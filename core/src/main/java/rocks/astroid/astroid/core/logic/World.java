@@ -37,6 +37,12 @@ public class World {
         return projectiles;
     }
 
+    public void addClient(Ship ship)
+    {
+        clients.add(ship);
+    }
+
+
     public Collection<Ship> getClients() {
         return clients;
     }
