@@ -11,6 +11,7 @@ import rocks.astroid.astroid.core.screens.Play;
 import rocks.astroid.astroid.physics.Body;
 
 import java.util.Hashtable;
+import java.util.Set;
 
 public class GlobalFunctions {
     public static final float FRICTION = .003f;
@@ -78,7 +79,10 @@ public class GlobalFunctions {
             table.remove(key);
         }
         public static void displayTable(){
-            table.keySet();
+            Set<Interactable> keys = table.keySet();
+            for(Interactable key: keys){
+                System.out.println(key);
+            }
         }
 
     }

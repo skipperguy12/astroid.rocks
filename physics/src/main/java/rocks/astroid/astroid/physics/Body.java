@@ -33,6 +33,25 @@ public class Body
 		shape.initialize();
 	}
 
+	//Body is created in motion
+	public Body( Shape shape, float x, float y, float orientation, Vec2 velocity)
+	{
+		this.shape = shape;
+
+		position.set( x, y );
+		this.velocity.set(velocity);
+		angularVelocity = 0;
+		torque = 0;
+		orient = orientation;
+		force.set( 0, 0 );
+		staticFriction = 0.5f;
+		dynamicFriction = 0.3f;
+		restitution = 0.2f;
+
+		shape.body = this;
+		shape.initialize();
+	}
+
 	public void applyForce( Vec2 f )
 	{
 		// force += f;

@@ -447,6 +447,28 @@ public class Vec2
 		return array;
 	}
 
+
+	//increases the magnitude of the vector by amount
+	public Vec2 extend(float amount)
+	{
+		float oldSize = this.length();
+		x+= (x*amount)/oldSize;
+		y+= (y*amount)/oldSize;
+		return this;
+	}
+
+	public Vec2 extendNew(float amount)
+	{
+		return new Vec2(x+(x*amount)/this.length(),y+(y*amount)/this.length());
+	}
+
+	//creates new copy of this Vector
+	public Vec2 copy()
+	{
+		return new Vec2(x,y);
+	}
+
+
 	@Override
 	public String toString() {
 		return "Vec2{" +

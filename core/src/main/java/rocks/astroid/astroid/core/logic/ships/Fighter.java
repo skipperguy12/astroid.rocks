@@ -7,7 +7,7 @@ import rocks.astroid.astroid.physics.Polygon;
 import rocks.astroid.astroid.physics.Vec2;
 
 /**
- * Fighter - the normal spaceship. Has high mobility, easy weapon (low damage, high frequency), blast ultimate to fire in all directions
+ * Fighter - the normal spaceship. Has high mobility, easy weapon (low baseDamage, high frequency), blast ultimate to fire in all directions
  *      Can deploy “satellite” for healing teammates in a certain radius
  */
 public class Fighter extends CombatShip {

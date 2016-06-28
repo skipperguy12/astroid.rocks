@@ -93,7 +93,7 @@ public class SpriteDisplay
     {
         batch.begin();
        //drawSpriteList(astroids);
-        //drawSpriteList(projectiles);
+        drawSpriteList(projectiles);
         drawSpriteList(ships);
         batch.end();
     }

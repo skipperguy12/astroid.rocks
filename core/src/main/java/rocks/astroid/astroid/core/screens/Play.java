@@ -45,7 +45,7 @@ public class Play implements Screen {
         getWorld().getPhysicsScene().step(delta);
 
         ///for(Astroid astroid: getWorld().getAstroids()) astroid.update();
-        //for(Projectile projectile: getWorld().getProjectiles()) projectile.update();
+        //for(Projectile projectile: getWorld().getProjectiles()) System.out.println(projectile.getBody().getVelocity());
 
         //GlobalFunctions.moveLaterally(world.getPlayer());
         //world.getPlayer().update();
@@ -85,13 +85,13 @@ public class Play implements Screen {
 
         world.addClient(new Fighter(Gdx.graphics.getWidth()+10000,Gdx.graphics.getHeight()+10000,0));
 
+        GlobalFunctions.PhysicsManager.displayTable();
+
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.zoom += 3f;
 
-
-
         //new Astroid(world.getPlayer().getLocation().cpy());
-        generateAstroidsAroundPlayer();
+        //generateAstroidsAroundPlayer();
 
         input = new UserInput(world.getPlayer(),cam);
         Gdx.input.setInputProcessor(input);//not necessary?
@@ -127,9 +127,11 @@ public class Play implements Screen {
                 return;
             for(;loc<getWorld().getProjectiles().size();loc++)
             {
-                if(getWorld().getProjectiles().get(loc).getSpeed()<=PROJECTILE_REMOVAL_SPEED)
+                if(getWorld().getProjectiles().get(loc).getBody().getVelocity().length()<=PROJECTILE_REMOVAL_SPEED)
                 {
-                    getWorld().getProjectiles().remove(loc);
+                    GlobalFunctions.PhysicsManager.removeBody(getWorld().getProjectiles().remove(loc));
+                    //spriteDisplay.removeSpritePlus(spritePlus);
+
                     break;
                 }
                 if(loc==getWorld().getProjectiles().size()-1)
