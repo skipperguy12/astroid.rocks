@@ -7,7 +7,7 @@ import rocks.astroid.astroid.core.logic.weapons.Projectile;
  */
 public class Engineer extends CombatShip {
     public Engineer(float x, float y, float rotation) {
-        super(x, y, rotation, 8, 1.5f, 700, 150, Projectile.Projectiles.Bullet,3,null);
+        super(x, y, rotation, 700, 150, Projectile.Projectiles.Bullet,3,null);
     }
 
 }

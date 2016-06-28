@@ -447,4 +447,11 @@ public class Vec2
 		return array;
 	}
 
+	@Override
+	public String toString() {
+		return "Vec2{" +
+				"x=" + x +
+				", y=" + y +
+				'}';
+	}
 }

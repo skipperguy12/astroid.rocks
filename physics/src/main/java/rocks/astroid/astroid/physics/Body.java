@@ -39,6 +39,12 @@ public class Body
 		force.addi( f );
 	}
 
+	public void applyTorque(float torque)
+	{
+		this.torque+=torque;
+	}
+
+
 	public void applyImpulse( Vec2 impulse, Vec2 contactVector )
 	{
 		// velocity += im * impulse;

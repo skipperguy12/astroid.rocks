@@ -4,8 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.screens.Play;
+import rocks.astroid.astroid.physics.Body;
 
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class SpriteDisplay
     private ArrayList<SpritePlus> projectiles;
     private ArrayList<SpritePlus> astroids;
     private Sprite sprite;
-    private Vector3 location;
+    private Body body;
     private SpritePlus.types type;
     public SpriteDisplay()
     {
@@ -90,8 +92,8 @@ public class SpriteDisplay
     public void render()
     {
         batch.begin();
-        drawSpriteList(astroids);
-        drawSpriteList(projectiles);
+       //drawSpriteList(astroids);
+        //drawSpriteList(projectiles);
         drawSpriteList(ships);
         batch.end();
     }
@@ -99,13 +101,12 @@ public class SpriteDisplay
     {
         for(SpritePlus spr: imgs) {
             sprite = spr.getSprite();
-            location = spr.getLocation();
+            body = spr.getBody();
             type = spr.getType();
-            if (type == SpritePlus.types.PROJECTILE) sprite.setRotation((location.z + 270) % 360);
-            else sprite.setRotation(location.z);
-            sprite.setX(location.x - sprite.getWidth() / 2);
-            sprite.setY(location.y - sprite.getHeight() / 2);
-
+            if (type == SpritePlus.types.PROJECTILE) sprite.setRotation(((MathUtils.radiansToDegrees*body.getOrient()) + 270) % 360);
+            else sprite.setRotation(MathUtils.radiansToDegrees*body.getOrient());
+            sprite.setX(body.getPosition().x - sprite.getWidth() / 2);
+            sprite.setY(body.getPosition().y - sprite.getHeight() / 2);
             sprite.draw(batch);
         }
     }

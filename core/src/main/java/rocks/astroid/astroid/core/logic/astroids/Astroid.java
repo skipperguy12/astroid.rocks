@@ -30,7 +30,7 @@ public class Astroid implements Interactable {
     {
         this.type = Astroids.values()[MathUtils.random(2)];
         this.location = location;
-        this.spritePlus = new SpritePlus(getSprite(),location, SpritePlus.types.ASTROID);
+        this.spritePlus = new SpritePlus(getSprite(),null, SpritePlus.types.ASTROID);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getWorld().getAstroids().add(this);
     }
@@ -46,7 +46,7 @@ public class Astroid implements Interactable {
         else this.type = type;
 
         this.location = location;
-        this.spritePlus = new SpritePlus(getSprite(),location, SpritePlus.types.ASTROID);
+        this.spritePlus = new SpritePlus(getSprite(),null, SpritePlus.types.ASTROID);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getSpriteDisplay().addSpritePlus(spritePlus);
         ((Play)((Game) Gdx.app.getApplicationListener()).getScreen()).getWorld().getAstroids().add(this);
     }

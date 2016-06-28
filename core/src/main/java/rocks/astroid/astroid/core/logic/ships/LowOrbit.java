@@ -5,6 +5,6 @@ package rocks.astroid.astroid.core.logic.ships;
  */
 public class LowOrbit extends CombatShip{
     public LowOrbit(float x, float y, float rotation) {
-        super(x, y, rotation, 10, 2, 1500, 200, null, 2,null);
+        super(x, y, rotation, 1500, 200, null, 2,null);
     }
 }

@@ -14,16 +14,6 @@ import rocks.astroid.astroid.physics.Polygon;
  * Abstract representation of a SHIP object
  */
 public abstract class Ship implements Interactable {
-//    //SHIP location vector will contain: x, y, and rotation in degrees.
-//    //STARTING LOCATION ONLY
-//    protected Vector3 location;
-    //Speed of ship- defaults to 1
-//    protected float thrust;
-//    //Mass of the ship- used in combination with thrust to determine acceleration
-//    protected float mass;
-
-//    protected float speed;
-
     protected float hull;
 
     protected float shields;
@@ -59,29 +49,9 @@ public abstract class Ship implements Interactable {
 
 //    public void update()
 //    {
-//        //slow();
 //        spritePlus.setLocation(this.location);
 //    }
 
-//    public float getThrust() {
-//        return thrust;
-//    }
-//    public void setThrust(float thrust) {
-//        this.thrust = thrust;
-//    }
-//    public float getMass() {
-//        return mass;
-//    }
-//    public void setMass(float mass) {
-//        this.mass = mass;
-//    }
-//    @Override
-//    public float getSpeed() {
-//        return speed;
-//    }
-//    public void setSpeed(float speed) {
-//        this.speed = speed;
-//    }
     public Team getTeam() {
         return team;
     }
@@ -111,20 +81,4 @@ public abstract class Ship implements Interactable {
         return body;
     }
 
-    //    public void slow()
-//    {
-//        if(speed>0) speed-=GlobalFunctions.FRICTION;
-//        if(speed<0) speed+=GlobalFunctions.FRICTION;
-//      }
-
-    /**
-     * location stored as a Vector3- xPos, yPos, and Rotation of the ship.
-     */
-//    public Vector3 getLocation() {
-//        return location;
-//    }
-
-//    public void setLocation(Vector3 location) {
-//        this.location = location;
-//    }
 }

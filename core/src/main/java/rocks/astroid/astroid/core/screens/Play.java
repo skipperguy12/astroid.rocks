@@ -15,6 +15,7 @@ import rocks.astroid.astroid.core.logic.astroids.Astroid;
 import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
 import rocks.astroid.astroid.physics.PhysicsScene;
+import rocks.astroid.astroid.physics.Vec2;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,8 @@ public class Play implements Screen {
         //world.getPlayer().update();
 
         //follow player
-        cam.position.set(world.getPlayer().get().x, world.getPlayer().getLocation().y, 0);
+        //System.out.println(world.getPlayer().getBody().getPosition().x*GlobalFunctions.METERS_TO_PIXELS + "  " + world.getPlayer().getBody().getPosition().y*GlobalFunctions.METERS_TO_PIXELS );
+        cam.position.set(world.getPlayer().getBody().getPosition().x, world.getPlayer().getBody().getPosition().y, 0);
         cam.update();
 
         projectileCheckRemove(); //TODO: USE THIS
@@ -83,6 +85,8 @@ public class Play implements Screen {
 
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.zoom += 3f;
+
+
 
         //new Astroid(world.getPlayer().getLocation().cpy());
         generateAstroidsAroundPlayer();
@@ -160,9 +164,8 @@ public class Play implements Screen {
     public void generateAstroidsAroundPlayer(){
         for(int i = 0;i<100;i++)
         {
-            Vector3 temp = world.getPlayer().getLocation().cpy();
-            temp.add(MathUtils.random(-10000,10000),MathUtils.random(-10000,10000),MathUtils.random(360));
-            new Astroid(temp);
+            Vec2 temp = world.getPlayer().getBody().getPosition();
+            new Astroid(new Vector3(MathUtils.random(-10000,10000)+temp.x,MathUtils.random(-10000,10000)+temp.y,MathUtils.random(359)));
         }
     }
 }
