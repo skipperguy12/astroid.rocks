@@ -49,14 +49,14 @@ public abstract class Projectile implements Interactable {
     }
 
     /**
-     * TODO: find relative speed of projectile and multiply baseDamage by the relative speed on impact
-     * @return
-     *
+     * @param velocity: velocity of other object in collision
+     * @return relative speed of impact multipied by the baseDamage of the projectile
      */
-    public float getBaseDamage() {
-        return baseDamage;
+    public float getDamage(Vec2 velocity) {
+        return velocity.add(body.getVelocity()).length() * baseDamage;
     }
     public Body getBody(){return body;}
+    public SpritePlus getSpritePlus(){return spritePlus;}
 
 
 //    public void update()

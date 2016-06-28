@@ -130,8 +130,7 @@ public class Play implements Screen {
                 if(getWorld().getProjectiles().get(loc).getBody().getVelocity().length()<=PROJECTILE_REMOVAL_SPEED)
                 {
                     GlobalFunctions.PhysicsManager.removeBody(getWorld().getProjectiles().remove(loc));
-                    //spriteDisplay.removeSpritePlus(spritePlus);
-
+                    spriteDisplay.removeSpritePlus(world.getProjectiles().get(loc).getSpritePlus());
                     break;
                 }
                 if(loc==getWorld().getProjectiles().size()-1)
