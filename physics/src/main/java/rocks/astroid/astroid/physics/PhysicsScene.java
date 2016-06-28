@@ -1,6 +1,7 @@
 package rocks.astroid.astroid.physics;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Hashtable;
 
 
@@ -94,6 +95,22 @@ public class PhysicsScene
 		Body b = new Body(shape, x, y, orientation);
 		bodies.add(b);
 		return b;
+	}
+
+	public Body add(Body b)
+	{
+		bodies.add(b);
+		return b;
+	}
+	public boolean remove(Body b)
+	{
+		try{
+			bodies.remove(b);
+		}
+		catch (ConcurrentModificationException e) {
+			return false;
+		}
+		return true;
 	}
 
 	public void clear()

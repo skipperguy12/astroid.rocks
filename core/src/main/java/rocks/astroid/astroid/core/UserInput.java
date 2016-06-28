@@ -7,10 +7,13 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.logic.ships.CombatShip;
 import rocks.astroid.astroid.core.screens.Play;
+import rocks.astroid.astroid.physics.Body;
+import rocks.astroid.astroid.physics.Vec2;
 
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
@@ -19,18 +22,24 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
  */
 public class UserInput extends InputAdapter {
     private CombatShip ship;
+    private Body body;
     private OrthographicCamera cam;
 
     public UserInput(CombatShip ship, OrthographicCamera cam)
     {
         this.ship = ship;
+        body = GlobalFunctions.PhysicsManager.getBody(ship);
         this.cam = cam;
     }
     public void handleInput(float delta) {
 
-        float mobility = ship.getThrust() / ship.getMass();
+        //float mobility = ship.getThrust() / ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
+            GlobalFunctions.PhysicsManager.getBody(ship).applyForce(new Vec2(
+                    (float) StrictMath.cos(body.getOrient())* 10 ,
+                    (float) StrictMath.sin(body.getOrient())* 10
+            ));
+            //ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
             //ship.getSpritePlus().setSprite(GlobalFunctions.getMovingShipSprite(ship));
         }
 //        if (Gdx.input.getInputProcessor().keyUp(Input.Keys.UP)) {
@@ -38,16 +47,20 @@ public class UserInput extends InputAdapter {
 //        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN))
-            ship.setSpeed(ship.getSpeed() - mobility * Gdx.graphics.getDeltaTime());
+            GlobalFunctions.PhysicsManager.getBody(ship).applyForce(new Vec2(
+                    (float) (-1f * StrictMath.cos(body.getOrient())* 10) ,
+                    (float) (-1f * StrictMath.sin(body.getOrient())* 10)
+            ));
+            //ship.setSpeed(ship.getSpeed() - mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            ship.getLocation().z += mobility * Gdx.graphics.getDeltaTime() * 15;
-            ship.setSpeed((float) (ship.getSpeed() * .995));
+            //ship.getLocation().z += mobility * Gdx.graphics.getDeltaTime() * 15;
+            //ship.setSpeed((float) (ship.getSpeed() * .995));
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            ship.getLocation().z -= mobility * Gdx.graphics.getDeltaTime() * 15;
-            ship.setSpeed((float) (ship.getSpeed() * .995));
+            //ship.getLocation().z -= mobility * Gdx.graphics.getDeltaTime() * 15;
+            //ship.setSpeed((float) (ship.getSpeed() * .995));
         }
-        ship.getLocation().z = (ship.getLocation().z + 360) % 360;
+        //ship.getLocation().z = (ship.getLocation().z + 360) % 360;
 
 //        if (Gdx.input.getInputProcessor() != null && Gdx.input.getInputProcessor().keyDown(Input.Keys.SPACE)) {
 //            System.out.println("hi");

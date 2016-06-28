@@ -62,4 +62,15 @@ public class Body
 		shape.setOrient( radians );
 	}
 
+	public Vec2 getPosition() {
+		return position;
+	}
+
+	public float getOrient() {
+		return orient;
+	}
+
+	public Vec2 getVelocity() {
+		return velocity;
+	}
 }

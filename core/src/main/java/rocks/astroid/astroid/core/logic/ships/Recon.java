@@ -5,6 +5,6 @@ package rocks.astroid.astroid.core.logic.ships;
  */
 public class Recon extends CombatShip{
     public Recon(float x, float y, float rotation) {
-        super(x, y, rotation, 15, 1, 500, 100, null,4);
+        super(x, y, rotation, 15, 1, 500, 100, null,4,null);
     }
 }

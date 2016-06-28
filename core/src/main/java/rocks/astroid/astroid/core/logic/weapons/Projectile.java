@@ -3,7 +3,7 @@ package rocks.astroid.astroid.core.logic.weapons;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
-import rocks.astroid.astroid.core.Movable;
+import rocks.astroid.astroid.core.Interactable;
 import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.client.SpritePlus;
 import rocks.astroid.astroid.core.screens.Play;
@@ -11,7 +11,7 @@ import rocks.astroid.astroid.core.screens.Play;
 /**
  * Super class for weapons
  */
-public abstract class Projectile implements Movable {
+public abstract class Projectile implements Interactable {
     protected Vector3 location;
     protected SpritePlus spritePlus;
 
@@ -74,7 +74,7 @@ public abstract class Projectile implements Movable {
             //System.out.println(speed);
             //((Play) ((Game) Gdx.app.getApplicationListener()).getScreen()).addToProjectileRemove(this);//TODO: USED IN projectileRemove() IN Play
         }
-        GlobalFunctions.moveLaterally(this);
-        spritePlus.setLocation(location);
+//        GlobalFunctions.moveLaterally(this);
+//        spritePlus.setLocation(location);
     }
 }

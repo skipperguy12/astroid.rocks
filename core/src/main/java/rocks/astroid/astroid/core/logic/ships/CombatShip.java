@@ -8,6 +8,7 @@ import rocks.astroid.astroid.core.client.GlobalFunctions;
 import rocks.astroid.astroid.core.logic.weapons.Bullet;
 import rocks.astroid.astroid.core.logic.weapons.Projectile;
 import rocks.astroid.astroid.core.screens.Play;
+import rocks.astroid.astroid.physics.Polygon;
 
 /**
  * A ship that has a mounted weapon
@@ -19,8 +20,8 @@ public abstract class CombatShip extends Ship {
     protected float fireRate;
     protected float timer = 0;
 
-    public CombatShip(float x, float y, float rotation, float thrust, float mass, float hull, float shields, Projectile.Projectiles projectileType, float fireRate) {
-        super(x, y, rotation, thrust, mass, hull, shields);
+    public CombatShip(float x, float y, float rotation, float hull, float shields, Projectile.Projectiles projectileType, float fireRate, Polygon shape) {
+        super(x, y, rotation,  hull, shields,shape);
         this.projectileType = projectileType;
         this.fireRate = fireRate;
     }
@@ -33,7 +34,8 @@ public abstract class CombatShip extends Ship {
 
         switch (projectileType) {
             case Bullet:
-                new Bullet(speed, location.cpy());
+                //TODO: UPDATE THIS BULLET REFERENCE
+                //new Bullet(speed, location.cpy());
                 break;
         }
         timer = 0;

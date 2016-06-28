@@ -29,13 +29,6 @@ public class Play implements Screen {
     private World world;
     private UserInput input;
 
-
-    public SpriteDisplay getSpriteDisplay()
-    {
-        return spriteDisplay;
-    }
-    public SpriteBatch getSpriteBatch(){return batch;}
-
     /**
      * order from front to back:
      * ship, projectiles, astroids
@@ -50,14 +43,14 @@ public class Play implements Screen {
 
         getWorld().getPhysicsScene().step(delta);
 
-        for(Astroid astroid: getWorld().getAstroids()) astroid.update();
-        for(Projectile projectile: getWorld().getProjectiles()) projectile.update();
+        ///for(Astroid astroid: getWorld().getAstroids()) astroid.update();
+        //for(Projectile projectile: getWorld().getProjectiles()) projectile.update();
 
-        GlobalFunctions.moveLaterally(world.getPlayer());
-        world.getPlayer().update();
+        //GlobalFunctions.moveLaterally(world.getPlayer());
+        //world.getPlayer().update();
 
         //follow player
-        cam.position.set(world.getPlayer().getLocation().x, world.getPlayer().getLocation().y, 0);
+        cam.position.set(world.getPlayer().get().x, world.getPlayer().getLocation().y, 0);
         cam.update();
 
         projectileCheckRemove(); //TODO: USE THIS
@@ -84,7 +77,9 @@ public class Play implements Screen {
         batch = new SpriteBatch();
         spriteDisplay = new SpriteDisplay();
 
-        world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
+        world = new World();
+        world.setPlayer(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0));
+        //world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.zoom += 3f;
@@ -156,6 +151,12 @@ public class Play implements Screen {
     public World getWorld() {
         return world;
     }
+    public SpriteDisplay getSpriteDisplay()
+    {
+        return spriteDisplay;
+    }
+    public SpriteBatch getSpriteBatch(){return batch;}
+
     public void generateAstroidsAroundPlayer(){
         for(int i = 0;i<100;i++)
         {

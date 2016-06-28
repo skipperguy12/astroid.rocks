@@ -17,6 +17,14 @@ public class World {
     private CombatShip player;
     private PhysicsScene physicsScene;
 
+    public World() {
+        this.projectiles = new ArrayList<Projectile>();
+        this.clients = new ArrayList<Ship>();
+        this.astroids = new ArrayList<Astroid>();
+        this.physicsScene = new PhysicsScene(0f, 0);
+        player = null;
+    }
+
     public World(CombatShip player) {
         this.projectiles = new ArrayList<Projectile>();
         this.clients = new ArrayList<Ship>();
@@ -59,7 +67,4 @@ public class World {
     public PhysicsScene getPhysicsScene() {
         return physicsScene;
     }
-
-
-
 }
