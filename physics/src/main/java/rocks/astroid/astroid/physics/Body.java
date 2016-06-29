@@ -98,4 +98,14 @@ public class Body
 	public Vec2 getVelocity() {
 		return velocity;
 	}
+
+	@Override
+	public String toString() {
+		return "Body{" +
+				"velocity=" + velocity +
+				", position=" + position +
+				", orient=" + orient +
+				", mass=" + mass +
+				'}';
+	}
 }

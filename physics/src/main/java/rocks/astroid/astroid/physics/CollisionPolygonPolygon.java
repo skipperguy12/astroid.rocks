@@ -28,6 +28,8 @@ public class CollisionPolygonPolygon implements CollisionCallback
 			return;
 		}
 
+		
+
 		int referenceIndex;
 		boolean flip; // Always point from a to b
 
@@ -280,5 +282,27 @@ public class CollisionPolygonPolygon implements CollisionCallback
 
 		return sp;
 	}
+	//https://github.com/FedericoPecora/meta-csp-framework/blob/master/src/main/java/org/metacsp/spatial/geometry/CollisionPolygonPolygon.java
+	public boolean verifyCollision( Manifold m, Polygon A, Polygon B )
+	{
+		m.contactCount = 0;
 
+		// Check for a separating axis with A's face planes
+		int[] faceA = { 0 };
+		float penetrationA = findAxisLeastPenetration( faceA, A, B );
+		if (penetrationA >= 0.0f)
+		{
+			return false;
+		}
+
+		// Check for a separating axis with B's face planes
+		int[] faceB = { 0 };
+		float penetrationB = findAxisLeastPenetration( faceB, B, A );
+		if (penetrationB >= 0.0f)
+		{
+			return false;
+		}
+
+		return true;
+	}
 }

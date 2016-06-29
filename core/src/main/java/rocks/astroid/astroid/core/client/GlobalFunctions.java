@@ -81,8 +81,9 @@ public class GlobalFunctions {
         public static void displayTable(){
             Set<Interactable> keys = table.keySet();
             for(Interactable key: keys){
-                System.out.println(key);
+                System.out.println(table.get(key));
             }
+            System.out.println("This Line has been left blank intentionally");
         }
 
     }

@@ -44,6 +44,8 @@ public class Play implements Screen {
 
         getWorld().getPhysicsScene().step(delta);
 
+        //GlobalFunctions.PhysicsManager.displayTable();
+
         ///for(Astroid astroid: getWorld().getAstroids()) astroid.update();
         //for(Projectile projectile: getWorld().getProjectiles()) System.out.println(projectile.getBody().getVelocity());
 
