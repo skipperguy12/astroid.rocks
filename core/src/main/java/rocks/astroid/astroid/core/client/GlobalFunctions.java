@@ -9,16 +9,14 @@ import rocks.astroid.astroid.core.logic.ships.Fighter;
 import rocks.astroid.astroid.core.logic.ships.Ship;
 import rocks.astroid.astroid.core.screens.Play;
 import rocks.astroid.astroid.physics.Body;
+import rocks.astroid.astroid.physics.Vec2;
 
 import java.util.Hashtable;
 import java.util.Set;
 
 public class GlobalFunctions {
-    public static final float FRICTION = .003f;
-    public static final float PROJECTILE_REMOVAL_SPEED = 25f;
-
+    public static final float PROJECTILE_REMOVAL_SPEED = 500f;
     public static final float METERS_TO_PIXELS = 10.0f;
-
     public static final float PIXELS_TO_METERS = 1/METERS_TO_PIXELS;
 
     public static Sprite getShipSprite(Ship ship) {
@@ -48,14 +46,13 @@ public class GlobalFunctions {
         return sprite;
     }
     /**
-     * moves the movable either forwards or backwards based on speed
+     * get movement vector
+     * @param angle radians
      */
-//    public static void moveLaterally(Movable movable)
-//    {
-//        Vector3 temp = movable.getLocation();
-//        temp.x+= MathUtils.cos((float)Math.toRadians(temp.z))* movable.getSpeed();
-//        temp.y+= MathUtils.sin((float)Math.toRadians(temp.z))* movable.getSpeed();
-//    }
+    public static Vec2 getMovementVector(float magnitude, float angle)
+    {
+       return new Vec2((float)StrictMath.cos(angle)*magnitude,(float)StrictMath.sin(angle) * magnitude ) ;
+    }
 
     /**
      * Connects the core to the physics engine

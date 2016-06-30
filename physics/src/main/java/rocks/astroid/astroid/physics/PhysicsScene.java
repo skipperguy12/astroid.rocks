@@ -148,7 +148,9 @@ public class PhysicsScene
 
 		b.velocity.addsi( b.force, b.invMass * dts );
 		b.velocity.addsi( Globals.GRAVITY, dts );
+		b.velocity.addsi(new Vec2(b.velocity.x*Globals.DRAG, b.velocity.y*Globals.DRAG),dts);
 		b.angularVelocity += b.torque * b.invInertia * dts;
+		b.angularVelocity += b.angularVelocity*Globals.DRAG*.1f;
 	}
 
 	public void integrateVelocity( Body b, float dt )

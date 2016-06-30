@@ -16,7 +16,8 @@ import rocks.astroid.astroid.physics.Vec2;
  */
 public class Bullet extends Projectile{
     public Bullet(Vec2 initialPosition, float orienation, Vec2 shipVelocity) {
-        super(initialPosition, orienation, 5, 6000,shipVelocity,new Sprite(new Texture("img/sprites/bullet.png")),new Polygon(
+        super(initialPosition, orienation, 5, 20000,shipVelocity,new Sprite(new Texture("img/sprites/bullet.png")),new Polygon(
+                100f,
 //                new Vec2(0f,0f),
 //                new Vec2(3f,0f),
 //                new Vec2(3.5f,.55f),

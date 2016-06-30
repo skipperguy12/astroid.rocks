@@ -30,9 +30,9 @@ public class Fighter extends CombatShip {
 //                        new Vec2(15.0f,4.44f),
 //                        new Vec2(15.0f,-12.52f),
 //                        new Vec2(60.0f,11.3f)
-                            new Vec2(0,0),
-                            new Vec2(500f,250),
-                            new Vec2(0,500)
+                          new Vec2(0,0),
+                          new Vec2(480f,240),
+                          new Vec2(0,480f)
                 ));
     }
 }

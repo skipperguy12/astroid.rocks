@@ -34,8 +34,7 @@ public abstract class CombatShip extends Ship {
 
         switch (projectileType) {
             case Bullet:
-                //TODO: UPDATE THIS BULLET REFERENCE
-                new Bullet(body.getPosition(),body.getOrient(),body.getVelocity());
+                new Bullet(body.getPosition().copy().add(GlobalFunctions.getMovementVector(120,body.getOrient())),body.getOrient(),body.getVelocity());
                 break;
         }
         timer = 0;

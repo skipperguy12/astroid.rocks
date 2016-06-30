@@ -4,6 +4,7 @@ public class Polygon extends Shape
 {
 
 	public static final int MAX_POLY_VERTEX_COUNT = 64;
+	public float DENSITY;
 
 	public int vertexCount;
 	public Vec2[] vertices = Vec2.arrayOf( MAX_POLY_VERTEX_COUNT );
@@ -11,15 +12,24 @@ public class Polygon extends Shape
 
 	public Polygon()
 	{
+		DENSITY=1f;
 	}
-	
 	public Polygon( Vec2 ... verts)
 	{
 		set( verts );
+		DENSITY=1f;
 	}
+
+	public Polygon( float density, Vec2 ... verts)
+	{
+		set( verts );
+		DENSITY=density;
+	}
+
 	
 	public Polygon( float hw, float hh )
 	{
+		DENSITY = 1;
 		setBox( hw, hh );
 	}
 	
@@ -42,7 +52,7 @@ public class Polygon extends Shape
 	@Override
 	public void initialize()
 	{
-		computeMass( 1.0f );
+		computeMass( DENSITY );
 	}
 
 	@Override

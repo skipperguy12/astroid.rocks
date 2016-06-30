@@ -35,7 +35,7 @@ public abstract class Projectile implements Interactable {
         this.initialPosition = initialPosition;
         this.baseDamage = damage;
         //this.initialSpeed = baseSpeed+shipVelocity.length();
-        Vec2 baseMovementVec = new Vec2(MathUtils.cos(orientation)*baseSpeed*GlobalFunctions.PIXELS_TO_METERS,MathUtils.sin(orientation)*baseSpeed*GlobalFunctions.PIXELS_TO_METERS);
+        Vec2 baseMovementVec = new Vec2(MathUtils.cos(orientation)*baseSpeed*GlobalFunctions.PIXELS_TO_METERS,MathUtils.sin(orientation)*baseSpeed*GlobalFunctions.PIXELS_TO_METERS);//get rid of pixels to meters?
 
         body = new Body(shape, initialPosition.x, initialPosition.y, orientation,baseMovementVec.add(shipVelocity));
         //body = new Body(shape, initialPosition.x, initialPosition.y, orientation,shipVelocity.extendNew(baseSpeed));

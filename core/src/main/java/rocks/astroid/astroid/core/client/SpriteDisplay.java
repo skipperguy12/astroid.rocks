@@ -105,8 +105,8 @@ public class SpriteDisplay
             type = spr.getType();
             if (type == SpritePlus.types.PROJECTILE) sprite.setRotation(((MathUtils.radiansToDegrees*body.getOrient()) + 270) % 360);
             else sprite.setRotation(MathUtils.radiansToDegrees*body.getOrient());
-            sprite.setX(body.getPosition().x - sprite.getWidth() / 2);
-            sprite.setY(body.getPosition().y - sprite.getHeight() / 2);
+            sprite.setX(body.getPosition().x - sprite.getWidth()  / 3.2f);
+            sprite.setY(body.getPosition().y - sprite.getHeight() / 3.2f);
             sprite.draw(batch);
         }
     }

@@ -10,6 +10,7 @@ public class Globals
 	public static final float BIAS_ABSOLUTE = 0.01f;
 	public static final float DT = 1.0f / 60.0f;
 	public static final Vec2 GRAVITY = new Vec2( 0.0f, 0.0f );//CHANGE TO CHANGE GRAVITY
+	public static final float DRAG = -.05f;
 	public static final float RESTING = GRAVITY.mul( DT ).lengthSq() + EPSILON;
 	public static final float PENETRATION_ALLOWANCE = 0.05f;
 	public static final float PENETRATION_CORRETION = 0.4f;
