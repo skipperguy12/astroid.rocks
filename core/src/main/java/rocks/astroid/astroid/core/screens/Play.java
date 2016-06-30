@@ -85,7 +85,7 @@ public class Play implements Screen {
         world.setPlayer(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0));
         //world = new World(new Fighter(Gdx.graphics.getWidth()/2-250,Gdx.graphics.getHeight()/2-250,0) );
 
-        world.addClient(new Fighter(Gdx.graphics.getWidth()+10000,Gdx.graphics.getHeight()+10000,0));
+        world.addClient(new Fighter(Gdx.graphics.getWidth()+100,Gdx.graphics.getHeight()+100,0));
 
         GlobalFunctions.PhysicsManager.displayTable();
 

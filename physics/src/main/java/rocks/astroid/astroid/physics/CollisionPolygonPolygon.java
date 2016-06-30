@@ -28,7 +28,7 @@ public class CollisionPolygonPolygon implements CollisionCallback
 			return;
 		}
 
-		
+
 
 		int referenceIndex;
 		boolean flip; // Always point from a to b
@@ -152,7 +152,7 @@ public class CollisionPolygonPolygon implements CollisionCallback
 		m.contactCount = cp;
 	}
 
-	public float findAxisLeastPenetration( int[] faceIndex, Polygon A, Polygon B )
+	public static float findAxisLeastPenetration( int[] faceIndex, Polygon A, Polygon B )
 	{
 		float bestDistance = -Float.MAX_VALUE;
 		int bestIndex = 0;
@@ -283,7 +283,7 @@ public class CollisionPolygonPolygon implements CollisionCallback
 		return sp;
 	}
 	//https://github.com/FedericoPecora/meta-csp-framework/blob/master/src/main/java/org/metacsp/spatial/geometry/CollisionPolygonPolygon.java
-	public boolean verifyCollision( Manifold m, Polygon A, Polygon B )
+	public static boolean verifyCollision( Manifold m, Polygon A, Polygon B )
 	{
 		m.contactCount = 0;
 

@@ -34,7 +34,7 @@ public abstract class Ship implements Interactable {
         this.hull = hull;
         this.shields = shields;
 
-        body = new Body(shape, x*GlobalFunctions.PIXELS_TO_METERS, y*GlobalFunctions.PIXELS_TO_METERS, (float)(StrictMath.toRadians(rotation)));
+        body = new Body(shape, x, y, (float)(StrictMath.toRadians(rotation)));
         GlobalFunctions.PhysicsManager.putBody(this,body);
 
         this.spritePlus = new SpritePlus(GlobalFunctions.getShipSprite(this), body, SpritePlus.types.SHIP);

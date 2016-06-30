@@ -24,6 +24,7 @@ public class UserInput extends InputAdapter {
     private CombatShip ship;
     private Body body;
     private OrthographicCamera cam;
+    public static int INCREASE = 1000;
 
     public UserInput(CombatShip ship, OrthographicCamera cam)
     {
@@ -36,8 +37,8 @@ public class UserInput extends InputAdapter {
         //float mobility = ship.getThrust() / ship.getMass();
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             body.applyForce(new Vec2(
-                    (float) (1f * StrictMath.cos(body.getOrient())* 5000  * GlobalFunctions.METERS_TO_PIXELS) ,
-                    (float) (1f * StrictMath.sin(body.getOrient())* 5000  * GlobalFunctions.METERS_TO_PIXELS)
+                    (float) (1f * StrictMath.cos(body.getOrient())* 5000*INCREASE  * GlobalFunctions.METERS_TO_PIXELS) ,
+                    (float) (1f * StrictMath.sin(body.getOrient())* 5000*INCREASE  * GlobalFunctions.METERS_TO_PIXELS)
             ));
             //ship.setSpeed(ship.getSpeed() + mobility * Gdx.graphics.getDeltaTime());
             //ship.getSpritePlus().setSprite(GlobalFunctions.getMovingShipSprite(ship));
@@ -48,17 +49,17 @@ public class UserInput extends InputAdapter {
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN))
             body.applyForce(new Vec2(
-                    (float) (-1f * StrictMath.cos(body.getOrient())* 5000  * GlobalFunctions.METERS_TO_PIXELS) ,
-                    (float) (-1f * StrictMath.sin(body.getOrient())* 5000  * GlobalFunctions.METERS_TO_PIXELS)
+                    (float) (-1f * StrictMath.cos(body.getOrient())* 5000*INCREASE  * GlobalFunctions.METERS_TO_PIXELS) ,
+                    (float) (-1f * StrictMath.sin(body.getOrient())* 5000*INCREASE * GlobalFunctions.METERS_TO_PIXELS)
             ));
             //ship.setSpeed(ship.getSpeed() - mobility * Gdx.graphics.getDeltaTime());
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            body.applyTorque(50000 * GlobalFunctions.METERS_TO_PIXELS);
+            body.applyTorque(500000 *INCREASE* GlobalFunctions.METERS_TO_PIXELS);
             //ship.getLocation().z += mobility * Gdx.graphics.getDeltaTime() * 15;
             //ship.setSpeed((float) (ship.getSpeed() * .995));
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            body.applyTorque(-50000 * GlobalFunctions.METERS_TO_PIXELS);
+            body.applyTorque(-500000 *INCREASE* GlobalFunctions.METERS_TO_PIXELS);
             //ship.getLocation().z -= mobility * Gdx.graphics.getDeltaTime() * 15;
             //ship.setSpeed((float) (ship.getSpeed() * .995));
         }

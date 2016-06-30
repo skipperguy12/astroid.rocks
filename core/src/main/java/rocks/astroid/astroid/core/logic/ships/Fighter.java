@@ -21,15 +21,18 @@ public class Fighter extends CombatShip {
     public Fighter(float x, float y, float rotation) {
         super(x, y, rotation, 1000, 100, Projectile.Projectiles.Bullet, 10,
                 new Polygon(
-                        new Vec2(15.0f,34.76f),
-                        new Vec2(15.0f,18.0f),
-                        new Vec2(23.0f,1.78f),
-                        new Vec2(28.6f,12.44f),
-                        new Vec2(28.6f,10.04f),
-                        new Vec2(23.0f,4.68f),
-                        new Vec2(15.0f,4.44f),
-                        new Vec2(15.0f,-12.52f),
-                        new Vec2(60.0f,11.3f)
+//                        new Vec2(15.0f,34.76f),
+//                        new Vec2(15.0f,18.0f),
+//                        new Vec2(23.0f,1.78f),
+//                        new Vec2(28.6f,12.44f),
+//                        new Vec2(28.6f,10.04f),
+//                        new Vec2(23.0f,4.68f),
+//                        new Vec2(15.0f,4.44f),
+//                        new Vec2(15.0f,-12.52f),
+//                        new Vec2(60.0f,11.3f)
+                            new Vec2(0,0),
+                            new Vec2(500f,250),
+                            new Vec2(0,500)
                 ));
     }
 }

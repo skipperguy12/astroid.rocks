@@ -99,6 +99,10 @@ public class Body
 		return velocity;
 	}
 
+	public Shape getShape() {
+		return shape;
+	}
+
 	@Override
 	public String toString() {
 		return "Body{" +
